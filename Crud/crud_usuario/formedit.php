@@ -44,6 +44,7 @@ $dados = mysqli_fetch_assoc($resultado);
    
     Edite seu tipo de usuario :<br><br>
     <label>Professor<input  type="radio" value="1" name="usuario_tipo"/></label><br><br>
+
     <label>Monitor<input  type="radio" value="2" name="usuario_tipo"/></label><br><br>
     <label>Aluno<input  type="radio" value="3" name="usuario_tipo"/></label><br><br>
 
