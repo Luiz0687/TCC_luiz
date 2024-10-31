@@ -21,7 +21,7 @@ if(!isset($_SESSION)){
     <h1>Página do professor</h1>
     
     <h2><?php
-    echo $_SESSION['nome'];
+    echo "Bem vindo professor(a)" . $_SESSION['nome'] . "!";
     ?></h2>
    <a href="../../Crud/crud_projeto/">Crud projeto</a><br><br>
    <a href="../../Crud/crud_frequencia/">Crud frequencia</a><br><br>
@@ -30,8 +30,7 @@ if(!isset($_SESSION)){
    <a href="../../Crud/crud_usuario/designar.php">Designar monitor</a><br><br>
    
 
-
-    <a href="../../index.php">Sair</a>
+<button><a href="../../index.php">Voltar</a></button>
 
 </body>
 </html>

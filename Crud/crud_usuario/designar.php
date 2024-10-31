@@ -7,8 +7,7 @@ $sql = "SELECT id_usuario,nome,email,usuario_tipo FROM usuario";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
-
-
+echo '<h1>Designar Monitor</h1>';
 //Lista os itens
 echo '<table border=1>
 <tr>
@@ -29,5 +28,5 @@ echo '</tr>';
 }
 
 echo '</table>'."<br>";
-echo '<button><a href="index.php">Voltar</a></button>';
+echo '<button><a href="../../login/professor/professor.php">Voltar</a></button>';
 ?>

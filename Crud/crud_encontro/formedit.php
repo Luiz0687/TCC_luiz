@@ -4,11 +4,11 @@
 
 
 // Conectar ao BD
-require_once("../conecta.php");
+require_once("../../conecta.php");
 
-
+$id_encontro = $_GET['id_encontro'];
 // Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM usuario";
+$sql = "SELECT * FROM encontro WHERE id_encontro = '$id_encontro'";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
@@ -25,7 +25,7 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar cadastro</title>
+    <title>Editar encontro</title>
     
 </head>
 <body>
@@ -33,15 +33,15 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="get">
 
     <h2>Editar cadastro</h2>
-    <input type="hidden" name="id_usuario" value="<?php echo $dados['id_usuario'];?>">
-    Edite seu nome
-    <input  type="text" value="<?php echo $dados['nome'];?>" name="nome"/><br><br>
-    Edite seu email
-    <input  type="text" value="<?php echo $dados['email'];?>" name="email"/><br><br>
-    Edite sua senha
-    <input type="password" value="<?php echo $dados['senha'];?>" name="senha" id="senha"/><br><br>
-    Edite seu tipo de usuario
-    <input  type="text" value="<?php echo $dados['usuario_tipo'];?>" name="usuario_tipo"/><br><br>
+    <input type="hidden" name="id_encontro" value="<?php echo $dados['id_encontro'];?>">
+    edite o nome do encontro
+    <input type="text" name="nome" value="<?php echo $dados['nome'];?>"><br><br>
+    edite a descricao
+    <input type="text" name="descricao" value="<?php echo $dados['descricao'];?>"><br><br>
+    edite a data
+    <input type="date" name="data_" value="<?php echo $dados['data_'];?>"><br><br>
+    Edite o horario
+    <input type="time" name="horario" value="<?php echo $dados['horario'];?>"><br><br>
 
     <input type="submit" value="Editar"/>
 

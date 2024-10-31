@@ -18,5 +18,5 @@ require_once("../conecta.php");
         <a href="listar.php">
             <h3>Ver os projetos</h3>
         </a>
-
     </b>
+<button><a href="../../login/professor/professor.php">Voltar</a></button>

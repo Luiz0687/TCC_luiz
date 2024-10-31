@@ -1,23 +1,22 @@
 <?php
 
 // Conectar ao BD
-require_once("../conecta.php");
-
+require_once("../../conecta.php");
 // receber os dados do formulário
-$id_usuario = $_GET['id_usuario'];
-$nome= $_GET['nome'];
-$email = $_GET['email'];
-$senha = $_GET['senha'];
-$usuario_tipo = $_GET['usuario_tipo'];
+$id_encontro = $_GET['id_encontro'];
+$descricao = $_GET['descricao'];
+$horario = $_GET['horario'];
+$data = $_GET['data_'];
+$nome = $_GET['nome'];
 
 
-$sql = "UPDATE usuario SET 
-nome = '$nome', email = '$email', senha = '$senha', usuario_tipo = $usuario_tipo WHERE id_usuario = $id_usuario";
+$sql = "UPDATE encontro SET descricao = '$descricao', horario = '$horario', data_ = '$data', nome = '$nome' WHERE id_encontro = '$id_encontro'";
+
 mysqli_query($conexao,$sql);
 
 if ($conexao->error) {
 
-    die("Falha ao editar usuário no sistema:". $conexao->error);
+    die("Falha ao editar encontro no sistema:". $conexao->error);
 
 }else {
     header("location: listar.php");

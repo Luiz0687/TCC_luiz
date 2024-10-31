@@ -1,16 +1,17 @@
 <?php
 
 //conectar ao banco de dados.
-require_once("../conecta.php");
+require_once("../../conecta.php");
 
 //receber os dados do formulário.
+$descricao = $_POST['descricao'];
+$horario = $_POST['horario'];
+$data = $_POST['data_'];
 $nome = $_POST['nome'];
-$email = $_POST['email'];
-$senha = $_POST['senha'];
-$usuario_tipo = $_POST['usuario_tipo'];
+
 //comando sql.
-$sql = "INSERT INTO usuario (nome, email, senha, usuario_tipo) 
-VALUES ('$nome', '$email', '$senha' , $usuario_tipo)";
+$sql = "INSERT INTO encontro (descricao, horario, data_, nome) 
+VALUES ('$descricao','$horario','$data','$nome')";
 mysqli_query($conexao, $sql);
 header("location: listar.php");
 
