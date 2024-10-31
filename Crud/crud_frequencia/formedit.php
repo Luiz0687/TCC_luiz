@@ -8,7 +8,7 @@ require_once("../conecta.php");
 
 
 // Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM usuario";
+$sql = "SELECT * FROM projeto";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
@@ -33,18 +33,10 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="get">
 
     <h2>Editar cadastro</h2>
-    <input type="hidden" name="id_usuario" value="<?php echo $dados['id_usuario'];?>">
+    <input type="hidden" name="id_projeto" value="<?php echo $dados['id_projeto'];?>">
     Edite seu nome
-    <input  type="text" value="<?php echo $dados['nome'];?>" name="nome"/><br><br>
-    Edite seu email
-    <input  type="text" value="<?php echo $dados['email'];?>" name="email"/><br><br>
-    Edite sua senha
-    <input type="password" value="<?php echo $dados['senha'];?>" name="senha" id="senha"/><br><br>
-    Edite seu tipo de usuario
-    <input  type="text" value="<?php echo $dados['usuario_tipo'];?>" name="usuario_tipo"/><br><br>
-
+    <input type="text" name="nome" value="<?php echo $dados['nome_projeto'];?>">
     <input type="submit" value="Editar"/>
-
     <p> <button href="index.php">Voltar</button>
 
 </form>

@@ -1,15 +1,14 @@
 <?php
 
 //conectar ao banco de dados.
-require_once("../conecta.php");
+require_once("../../conecta.php");
 
 //receber os dados do formulário.
-$data = $_POST['data'];
-$horaInicio = $_POST['horaInicio'];
-$horaFinal = $_POST['horaFinal'];
+$data = $_POST['data_'];
+$horario = $_POST['horario'];
 //comando sql.
-$sql = "INSERT INTO horario ('data', horaInicio, horaFinal) 
-VALUES ('$data', '$horaInicio', '$horaFinal')";
+$sql = "INSERT INTO horario (data_, horario) 
+VALUES ('$data', '$horario')";
 mysqli_query($conexao, $sql);
 header("location: listar.php");
 

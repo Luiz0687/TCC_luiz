@@ -1,5 +1,5 @@
 <?php
-require_once("../conecta.php");
+require_once("../../conecta.php");
 ?>
 <!DOCTYPE html>
 <htm lang="pt-br">
@@ -11,5 +11,6 @@ require_once("../conecta.php");
 <b>
     <h1>Crud horario</h1><br>
     <a href="formcad.php">Cadastrar</a><br>
+    
     <a href="listar.php">Listar</a><br>
 </b>
