@@ -14,4 +14,5 @@ require_once "../conecta.php";
         <input type="submit" value="cadastrar">
     </form>
 </body>
-</html>
+</html><br>
+<button><a href="index.php">Voltar</a></button>
