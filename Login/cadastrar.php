@@ -43,7 +43,7 @@ if ($_POST) {
         Senha :<input type="password" name="senha" id="senha" required><br><br>
         <input type="submit" value="Cadastre-se">
     </form><br>
-    <a href="index.php"> Voltar</a>
+    <a href="../index.php"> Voltar</a>
 </body>
 
 </html>

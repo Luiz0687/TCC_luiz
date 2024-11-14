@@ -21,9 +21,11 @@ if(!isset($_SESSION)){
     <h1>Página do aluno</h1>
     
     <h2><?php
-    echo $_SESSION['nome'];
+    echo "Olá" . " " .$_SESSION['nome'] ;
     ?></h2>
-     <a href="listarProjeto.php">Visualizar os projetos</a><br><br>
+     <a href="listarProjeto.php">Projetos disponiveis</a><br><br>
+     <a href="listarProjeto.php">Minhas inscrições</a><br><br>
+     <a href="listarProjeto.php">Minhas frequências</a><br><br>
     <a href="../../index.php">Sair</a>
 </body>
 </html>
