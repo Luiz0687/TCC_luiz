@@ -13,6 +13,7 @@ $sql = "SELECT * FROM projeto";
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
 
+ 
 //Lista os itens
 echo '<table border=1>
 <tr>

@@ -5,7 +5,6 @@ require_once("../conecta.php");
 
 // Recebe o id do usuário
 $id_projeto = $_GET['id_projeto'];
-
 $sql = "SELECT * FROM projeto WHERE id_projeto = $id_projeto";
 
 
@@ -29,13 +28,16 @@ $dados = mysqli_fetch_assoc($resultado);
 </head>
 <body>
 
-<form action="alterar.php" method="get">
+<form action="alterar.php" method="GET">
 
     <h2>Editar cadastro</h2>
     <input type="hidden" name="id_projeto" value="<?php echo $dados['id_projeto'];?>">
     Edite seu nome
-    <input type="text" name="nome" value="<?php echo $dados['nome_projeto'];?>">
-    <input type="submit" value="Editar"/>
+    <input type="text" name="nome" value="<?php echo $dados['nome_projeto'];?>"><br>
+    <h4>Edite a situação do projeto</h4>
+    <input type="radio" name="situacao" value="indisponivel">Indisponível<br><br>
+    <input type="radio" name="situacao" value="disponivel">Disponivel<br><br>
+    <input type="submit" value="Editar"/><br>
     <button><a href="index.php">Voltar</a></button>
 
 </form>
