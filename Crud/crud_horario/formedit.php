@@ -35,7 +35,7 @@ $dados = mysqli_fetch_assoc($resultado);
 
     <input type="submit" value="Editar"/>
 
-    <p> <button href="index.php">Voltar</button>
+    <button><a href="index.php">Voltar</a></button>
 
 </form>
     

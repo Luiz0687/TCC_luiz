@@ -13,6 +13,7 @@ require_once "../../conecta.php";
     Informe a data do projeto : <input type="date" name="data_" required><br><br>
     Informe o horario do projeto : <input type="time" name="horario"required><br><br>
         <input type="submit" value="cadastrar">
+        <button><a href="index.php">Voltar</a></button>
     </form>
 </body>
 </html>

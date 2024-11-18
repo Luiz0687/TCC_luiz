@@ -10,13 +10,12 @@ require_once("../conecta.php");
         <title>Crud</title>
     </head>
     <b>
-        <h1>Projeto</h1>
+        <h1>Frequência</h1>
         <a href="formcad.php">
-            <h3>Cadastrar um projeto</h3>
+            <h3>Cadastrar uma Frequência</h3>
         </a>
-
         <a href="listar.php">
-            <h3>Ver os projetos</h3>
+            <h3>Ver as Frequência</h3>
         </a>
     </b>
     <button><a href="../../login/professor/professor.php">Voltar</a></button>

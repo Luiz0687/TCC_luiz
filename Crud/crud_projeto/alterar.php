@@ -7,8 +7,6 @@ require_once("../conecta.php");
 $id_projeto = $_GET['id_projeto'];
 $nome= $_GET['nome'];
 
-var_dump($id_projeto);
-
 $sql = "UPDATE projeto SET 
 nome = '$nome' WHERE id_projeto = $id_projeto";
 mysqli_query($conexao,$sql);

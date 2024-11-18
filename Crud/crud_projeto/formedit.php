@@ -1,17 +1,16 @@
 <?php
 
-// Recebe o id do usuário
-
-
 // Conectar ao BD
 require_once("../conecta.php");
 
+// Recebe o id do usuário
+$id_projeto = $_GET['id_projeto'];
 
-// Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM projeto";
+$sql = "SELECT * FROM projeto WHERE id_projeto = $id_projeto";
+
 
 // Executa o Select
-$resultado = mysqli_query($conexao,$sql);
+$resultado = mysqli_query($conexao, $sql);
 
 // Gera o vetor com os dados buscados
 $dados = mysqli_fetch_assoc($resultado);
@@ -37,7 +36,7 @@ $dados = mysqli_fetch_assoc($resultado);
     Edite seu nome
     <input type="text" name="nome" value="<?php echo $dados['nome_projeto'];?>">
     <input type="submit" value="Editar"/>
-    <p> <button href="index.php">Voltar</button>
+    <button><a href="index.php">Voltar</a></button>
 
 </form>
     

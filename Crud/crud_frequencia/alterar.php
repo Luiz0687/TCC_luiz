@@ -4,7 +4,7 @@
 require_once("../conecta.php");
 
 // receber os dados do formulário
-$id_projeto = $_GET['id_projeto'];
+$id_frequencia = $_GET['id_frequencia'];
 $nome= $_GET['nome'];
 
 
