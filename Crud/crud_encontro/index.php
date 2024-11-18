@@ -1,5 +1,5 @@
 <?php
-require_once("../../conecta.php");
+require_once("../conecta.php");
 ?>
 <!DOCTYPE html>
 <htm lang="pt-br">

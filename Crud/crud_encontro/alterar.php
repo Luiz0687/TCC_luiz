@@ -1,16 +1,16 @@
 <?php
 
 // Conectar ao BD
-require_once("../../conecta.php");
+require_once("../conecta.php");
 // receber os dados do formulário
 $id_encontro = $_GET['id_encontro'];
 $descricao = $_GET['descricao'];
 $horario = $_GET['horario'];
-$data = $_GET['data_'];
-$nome = $_GET['nome'];
+$data = $_GET['data'];
+$nome_encontro = $_GET['nome_encontro'];
 
 
-$sql = "UPDATE encontro SET descricao = '$descricao', horario = '$horario', data_ = '$data', nome = '$nome' WHERE id_encontro = '$id_encontro'";
+$sql = "UPDATE encontro SET descricao = '$descricao', horario = '$horario', data = '$data', nome_encontro = '$nome_encontro' WHERE id_encontro = '$id_encontro'";
 
 mysqli_query($conexao,$sql);
 

@@ -34,14 +34,14 @@ $dados = mysqli_fetch_assoc($resultado);
 
     <h2>Editar cadastro</h2>
     <input type="hidden" name="id_encontro" value="<?php echo $dados['id_encontro'];?>">
-    edite o nome do encontro
-    <input type="text" name="nome" value="<?php echo $dados['nome'];?>"><br><br>
     edite a descricao
     <input type="text" name="descricao" value="<?php echo $dados['descricao'];?>"><br><br>
     edite a data
-    <input type="date" name="data_" value="<?php echo $dados['data_'];?>"><br><br>
+    <input type="date" name="data" value="<?php echo $dados['data'];?>"><br><br>
     Edite o horario
     <input type="time" name="horario" value="<?php echo $dados['horario'];?>"><br><br>
+    edite o nome do encontro
+    <input type="text" name="nome_encontro" value="<?php echo $dados['nome_encontro'];?>"><br><br>
 
     <input type="submit" value="Editar"/>
 
