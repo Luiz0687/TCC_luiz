@@ -29,9 +29,9 @@ $dados = mysqli_fetch_assoc($resultado);
     <h2>Editar cadastro</h2>
     <input type="hidden" name="id_horario" value="<?php echo $dados['id_horario'] ;?>">
     edite a data
-    <input type="date" name="data_" value="<?php echo $dados['data_'];?>"><br><br>
+    <input type="date" name="cod_semana" value="<?php echo $dados['cod_semana'];?>"><br><br>
     Edite o horario
-    <input type="time" name="horario" value="<?php echo $dados['horario'];?>"><br><br>
+    <input type="time" name="hora" value="<?php echo $dados['hora'];?>"><br><br>
 
     <input type="submit" value="Editar"/>
 

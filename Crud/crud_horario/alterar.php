@@ -4,10 +4,10 @@
 require_once("../../conecta.php");
 // receber os dados do formulário
 $id_horario = $_GET['id_horario'];
-$data = $_GET['data_'];
-$horario = $_GET['horario'];
+$codSemana= $_GET['cod_semana'];
+$hora = $_GET['hora'];
 
-$sql = "UPDATE horario SET data_ = '$data', horario = '$horario' WHERE id_horario = '$id_horario'";
+$sql = "UPDATE horario SET cod_semana = '$codSemana', hora = '$hora' WHERE id_horario = '$id_horario'";
 
 mysqli_query($conexao,$sql);
 

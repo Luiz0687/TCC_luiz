@@ -4,11 +4,17 @@
 require_once("../../conecta.php");
 
 //receber os dados do formulário.
-$data = $_POST['data_'];
-$horario = $_POST['horario'];
+$codSemana = $_POST['cod_semana'];
+$hora = $_POST['hora'];
+
+$idProjeto = $_POST['fk_projeto_id_projeto'];
+
+
 //comando sql.
-$sql = "INSERT INTO horario (data_, horario) 
-VALUES ('$data', '$horario')";
+$sql = "INSERT INTO horario (cod_semana, hora, fk_projeto_id_projeto) VALUES ($codSemana, '$hora', $idProjeto)";
+
+
+
 mysqli_query($conexao, $sql);
 header("location: listar.php");
 
