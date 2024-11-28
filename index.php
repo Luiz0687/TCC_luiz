@@ -46,7 +46,7 @@ if ($_POST) {
     </form>
 
     <a href="login/cadastrar.php"><h4>Não possui um cadastro? Crie um agora mesmo!</h4></a>
-    <a href="login/cadastrar.php"><h4>Esqueceu a sua senha?</h4></a>
+    <a href="recuperar_senha/index.php"><h4>Esqueceu a sua senha?</h4></a>
 </body>
 
 </html>
