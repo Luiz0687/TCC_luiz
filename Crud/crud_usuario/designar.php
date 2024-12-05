@@ -1,6 +1,7 @@
 <?php
 //conectar ao banco de dados.
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 
 // Seleciona todos os dados da tabela historia
 $sql = "SELECT id_usuario,nome,email,usuario_tipo FROM usuario";
@@ -13,7 +14,7 @@ echo '<table border=1>
 <tr>
 <th>nome</th>
 <th>Email</th>
-<th>tipo usuario</th>
+<th>Selecione o usuário</th>
 <th colspan=3>Opções</th>
 </tr>';
 

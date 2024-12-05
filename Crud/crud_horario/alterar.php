@@ -2,12 +2,14 @@
 
 // Conectar ao BD
 require_once("../../conecta.php");
+$conexao = conectar();
 // receber os dados do formulário
-$id_horario = $_GET['id_horario'];
+
 $codSemana= $_GET['cod_semana'];
 $hora = $_GET['hora'];
+$id_projeto = $_POST['fk_projeto_id_projeto'];
 
-$sql = "UPDATE horario SET cod_semana = '$codSemana', hora = '$hora' WHERE id_horario = '$id_horario'";
+$sql = "UPDATE horario SET cod_semana = '$codSemana', hora = '$hora' WHERE id_horario = '$id_horario' INNER JOIN projeto WHERE fk_projeto_id_projeto = '$id_projeto'";
 
 mysqli_query($conexao,$sql);
 

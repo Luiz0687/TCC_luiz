@@ -1,7 +1,8 @@
 <?php
 
 //conectar ao banco de dados.
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 
 //receber os dados do formulário.
 $descricao = $_POST['descricao'];
@@ -13,7 +14,18 @@ $nome_encontro = $_POST['nome_encontro'];
 $sql = "INSERT INTO encontro (descricao, horario, data, nome_encontro) 
 VALUES ('$descricao','$horario','$data','$nome_encontro')";
 mysqli_query($conexao, $sql);
-//echo $sql;die;
-header("location: listar.php");
+
+
+
+
+
+
+
+
+
+
+
+
+//header("location: listar.php");
 
 ?>

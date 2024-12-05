@@ -4,7 +4,8 @@
 
 
 // Conectar ao BD
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 
 
 // Seleciona os dados do usuário da tabela

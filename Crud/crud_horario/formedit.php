@@ -1,5 +1,6 @@
 <?php
 require_once("../../conecta.php");
+$conexao = conectar();
 
 $id_horario = $_GET['id_horario'];
 $sql = "SELECT * FROM horario WHERE id_horario = $id_horario";

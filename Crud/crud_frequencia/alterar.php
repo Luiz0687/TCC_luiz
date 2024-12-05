@@ -1,7 +1,8 @@
 <?php
 
 // Conectar ao BD
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 
 // receber os dados do formulário
 $id_frequencia = $_GET['id_frequencia'];
