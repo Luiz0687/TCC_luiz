@@ -28,6 +28,7 @@ echo '<td>'.$dados['descricao'].'</td>';
 echo '<td>'.$dados['data'].'</td>';
 echo '<td>'.$dados['horario'].'</td>';
 echo '<td>'.$dados['nome_encontro'].'</td>';
+echo '<td> <a href="../crud_frequencia/formcad.php?id_encontro='.$dados['id_encontro'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
 echo '<td> <a href="formedit.php?id_encontro='.$dados['id_encontro'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
 echo '<td> <a href="excluir?id_encontro='.$dados['id_encontro'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
 echo '</tr>';

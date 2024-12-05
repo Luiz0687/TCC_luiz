@@ -52,6 +52,9 @@ if ($_POST) {
 
     <a href="login/cadastrar.php"><h4>Não possui um cadastro? Crie um agora mesmo!</h4></a>
     <a href="recuperar_senha/form-recuperar-senha.php"><h4>Esqueceu a sua senha?</h4></a>
+    <h4>Login - Professor - email luiz@luiz senha-1</h4>
 </body>
 
 </html>
+
+

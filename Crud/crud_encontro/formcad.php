@@ -10,6 +10,10 @@ $conexao = conectar();
     <title>Cadastro de encontro</title>
 </head>
 <body>
+
+ 
+
+
     <form action="cadastrar.php" method="post">
     Informe o nome do encontro : <input type="text" name="nome_encontro"required><br><br>
     Informe a descricao do projeto : <input type="text" name="descricao"required><br><br>
