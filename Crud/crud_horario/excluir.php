@@ -2,6 +2,7 @@
 
 // Conectar ao BD
 require_once("../../conecta.php");
+$conexao = conectar();
 
 // receber os dados do formulário
 $id_horario = $_GET['id_horario'];

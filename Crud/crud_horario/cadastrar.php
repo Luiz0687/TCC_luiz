@@ -2,6 +2,7 @@
 
 //conectar ao banco de dados.
 require_once("../../conecta.php");
+$conexao = conectar();
 
 //receber os dados do formulário.
 $codSemana = $_POST['cod_semana'];

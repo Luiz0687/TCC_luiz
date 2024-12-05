@@ -1,5 +1,6 @@
 <?php
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 ?>
 <!DOCTYPE html>
 <htm lang="pt-br">

@@ -2,6 +2,7 @@
 
 session_start();
 include_once("conecta.php");
+$conexao = conectar();
 
 if ($_POST) {
 
@@ -20,10 +21,14 @@ if ($_POST) {
     $user = $dados['nome'];
     $_SESSION['nome'] = $user;
 
-    if ($senha == $dados['senha']) {
+    if (password_verify($senha, $dados['senha'])) {
         header('location: login/redire.php');
+    }else {
+
+        echo "Senha invalida";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +51,7 @@ if ($_POST) {
     </form>
 
     <a href="login/cadastrar.php"><h4>Não possui um cadastro? Crie um agora mesmo!</h4></a>
-    <a href="recuperar_senha/index.php"><h4>Esqueceu a sua senha?</h4></a>
+    <a href="recuperar_senha/form-recuperar-senha.php"><h4>Esqueceu a sua senha?</h4></a>
 </body>
 
 </html>

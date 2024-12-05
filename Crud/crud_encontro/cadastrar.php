@@ -1,7 +1,8 @@
 <?php
 
 //conectar ao banco de dados.
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 
 //receber os dados do formulário.
 $descricao = $_POST['descricao'];

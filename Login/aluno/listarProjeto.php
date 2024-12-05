@@ -6,6 +6,7 @@
 
 //conectar ao banco de dados.
 require_once("../../conecta.php");
+$conexao = conectar();
 
 // Seleciona todos os dados da tabela historia
 $sql = "SELECT * FROM projeto";

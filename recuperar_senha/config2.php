@@ -3,8 +3,8 @@
 $config = [
     'host' => '',
     'user' => '',
-    'pass' => '',
-    'db'   => '',
+    'password' => '',
+    'banco' => '',
     'email' => '',
-    'senha_email' => ''
+    'senha_email' => '',
 ];

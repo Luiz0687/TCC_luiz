@@ -1,7 +1,8 @@
 <?php
 
 // Conectar ao BD
-require_once("../conecta.php");
+require_once("../../conecta.php");
+$conexao = conectar();
 
 // Recebe o id do usuário
 $id_projeto = $_GET['id_projeto'];

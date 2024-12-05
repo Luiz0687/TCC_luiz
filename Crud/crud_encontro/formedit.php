@@ -5,6 +5,7 @@
 
 // Conectar ao BD
 require_once("../../conecta.php");
+$conexao = conectar();
 
 $id_encontro = $_GET['id_encontro'];
 // Seleciona os dados do usuário da tabela

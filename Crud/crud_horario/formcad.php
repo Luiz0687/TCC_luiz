@@ -1,5 +1,6 @@
 <?php
-require_once "../../conecta.php";
+require_once("../../conecta.php");
+$conexao = conectar();
 
 //buscar pelos projetos
 $sql = "SELECT * FROM projeto";
