@@ -5,12 +5,11 @@ require_once("../conecta.php");
 
 // receber os dados do formulário
 $id_projeto = $_GET['id_projeto'];
-$nome= $_GET['nome'];
-
-
+$nome= $_GET['nome_projeto'];
+$situacao= $_GET['situacao'];
 
 $sql = "UPDATE projeto SET 
-nome_projeto = '$nome' WHERE id_projeto = $id_projeto";
+nome_projeto = '$nome', situacao = '$situacao' WHERE id_projeto = $id_projeto";
 mysqli_query($conexao,$sql);
 
 if ($conexao->error) {

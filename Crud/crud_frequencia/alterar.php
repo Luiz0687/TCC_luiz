@@ -4,15 +4,13 @@
 require_once("../conecta.php");
 
 // receber os dados do formulário
-$id_usuario = $_GET['id_usuario'];
+$id_frequencia = $_GET['id_frequencia'];
 $nome= $_GET['nome'];
-$email = $_GET['email'];
-$senha = $_GET['senha'];
-$usuario_tipo = $_GET['usuario_tipo'];
 
 
-$sql = "UPDATE usuario SET 
-nome = '$nome', email = '$email', senha = '$senha', usuario_tipo = $usuario_tipo WHERE id_usuario = $id_usuario";
+
+$sql = "UPDATE projeto SET 
+nome_projeto = '$nome' WHERE id_projeto = $id_projeto";
 mysqli_query($conexao,$sql);
 
 if ($conexao->error) {

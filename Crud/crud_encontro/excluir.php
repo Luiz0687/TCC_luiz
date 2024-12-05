@@ -4,9 +4,9 @@
 require_once("../conecta.php");
 
 // receber os dados do formulário
-$id_usuario = $_GET['id_usuario'];
+$id_encontro = $_GET['id_encontro'];
 
-$sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
+$sql = "DELETE FROM encontro WHERE id_encontro = $id_encontro";
 
 // executa o comando no BD
 mysqli_query($conexao,$sql);

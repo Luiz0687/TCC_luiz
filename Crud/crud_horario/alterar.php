@@ -1,16 +1,14 @@
 <?php
 
 // Conectar ao BD
-require_once("../conecta.php");
-
+require_once("../../conecta.php");
 // receber os dados do formulário
 $id_horario = $_GET['id_horario'];
-$data = $_GET['data'];
-$horaInicio = $_GET['horaInicio'];
-$horaFinal = $_GET['horaFinal'];
+$codSemana= $_GET['cod_semana'];
+$hora = $_GET['hora'];
 
-$sql = "UPDATE horario SET 
-data = '$data', horaInicio = $horaInicio, horaFinal = $horaFinal WHERE id_horario = $id_horario";
+$sql = "UPDATE horario SET cod_semana = '$codSemana', hora = '$hora' WHERE id_horario = '$id_horario'";
+
 mysqli_query($conexao,$sql);
 
 if ($conexao->error) {

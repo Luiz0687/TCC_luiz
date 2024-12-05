@@ -49,9 +49,9 @@ $dados = mysqli_fetch_assoc($resultado);
 
     <label>Aluno<input  type="radio" value="3" name="usuario_tipo"required/></label><br><br>
 
-    <input type="submit" value="Editar"/>
+    <input type="submit" value="Editar"/><br><br>
 
-    <p> <button href="index.php">Voltar</button>
+    <button><a href="designar.php">Voltar</a></button>   
 
 </form>
     

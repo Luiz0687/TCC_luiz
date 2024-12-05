@@ -1,7 +1,7 @@
 <?php
 
 // Conectar ao BD
-require_once("../conecta.php");
+require_once("../../conecta.php");
 
 // receber os dados do formulário
 $id_horario = $_GET['id_horario'];

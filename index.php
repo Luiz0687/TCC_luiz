@@ -44,8 +44,9 @@ if ($_POST) {
         <input type="submit" value="Login">
         <hr>
     </form>
-    <h3>Não tem um cadastro ? Crie um </h3>
-    <a href="login/cadastrar.php"> Cadastre-se</a>
+
+    <a href="login/cadastrar.php"><h4>Não possui um cadastro? Crie um agora mesmo!</h4></a>
+    <a href="login/cadastrar.php"><h4>Esqueceu a sua senha?</h4></a>
 </body>
 
 </html>

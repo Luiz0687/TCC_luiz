@@ -15,6 +15,7 @@ require_once "../conecta.php";
     Informe sua senha : <input type="password" name="senha" required><br><br>
     Informe seu tipo de usuario : <input type="number" name="usuario_tipo"  required><br><br>
         <input type="submit" value="cadastrar">
+        <button><a href="index.php">Voltar</a></button>
         
 
     </form>
