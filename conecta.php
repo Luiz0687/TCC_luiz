@@ -15,8 +15,9 @@ function conectar()
 
         $config['host'],
         $config['user'],
-        $config['pass'],
-        $config['db']
+        $config['password'],
+        $config['banco']
+      
 
     );
 

@@ -1,10 +1,10 @@
 <?php
 
 $config = [
-    'host' => '',
-    'user' => '',
+    'host' => 'localhost',
+    'user' => 'root',
     'password' => '',
-    'banco' => '',
+    'banco' => 'tcc_luiz',
     'email' => '',
     'senha_email' => '',
 ];

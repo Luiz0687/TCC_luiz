@@ -14,7 +14,7 @@ echo '<table border=1>
 <tr>
 <th>nome</th>
 <th>Email</th>
-<th>tipo usuario</th>
+<th>Selecione o usuário</th>
 <th colspan=3>Opções</th>
 </tr>';
 
