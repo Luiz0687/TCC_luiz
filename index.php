@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+include_once("notificacao/funcaoNotificacao.php");
 include_once("conecta.php");
 $conexao = conectar();
 
@@ -28,11 +27,11 @@ if ($_POST) {
         header('location: login/redire.php');
     }else {
 
-        echo "Senha invalida";
+        notificacoes(2,"Senha inválida.");
     }
     }else {
         
-        echo "Email está incorreto!";
+        notificacoes(2,"Email está incorreto.");
     }
 }
 
@@ -50,6 +49,11 @@ if ($_POST) {
 <body>
     <h1>Login</h1>
 
+    <?php
+    exibirNotificacoes();
+
+    limpaNotificacoes();
+    ?>
     <form action="" method="post">
         <label>Email : <input type="email" name="email" id="" required></label><br><br>
         <label>Senha : <input type="password" name="senha" id="" required></label><br><br>

@@ -22,19 +22,13 @@ $email = $_POST['email'];
 //O comando sql mysqli_fetch_row() é usado para obter uma linha de dados de um conjunto de resultados e retorná-la como um array enumerado
 
 //Verifica se o e-mail informado existe na tabela de alunos.
-$consulta_alunos = excutarSQL($mysql, "SELECT COUNT(*) FROM aluno WHERE email = '$email'");
-$quantidade_alunos = mysqli_fetch_row($consulta_alunos)[0];
+$consulta_usuario = excutarSQL($mysql, "SELECT COUNT(*) FROM usuario WHERE email = '$email'");
+$quantidade_usuario = mysqli_fetch_row($consulta_usuario)[0];
 
-// Verifica se o e-mail informado existe na tabela de coordenadores.
-$consulta_coordenadores = excutarSQL($mysql, "SELECT COUNT(*) FROM coordenador_curso WHERE email = '$email'");
-$quantidade_coordenadores = mysqli_fetch_row($consulta_coordenadores)[0];
 
-// Verifica se o e-mail informado existe na tabela de administradores.
-$consulta_administradores = excutarSQL($mysql, "SELECT COUNT(*) FROM administrador WHERE email = '$email'");
-$quantidade_administradores = mysqli_fetch_row($consulta_administradores)[0];
 
 //se todas as tabelas retornaram 0 então esse email não está cadastrado no sistema.
-if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_administradores == 0) {
+if ($quantidade_usuario == 0 ) {
     echo "E-mail: " . " " . $email . " " . " não está cadastrado no sistema!<p><a href = \"../index.php\">Voltar</a></p>";
 
     die();
@@ -42,10 +36,10 @@ if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_adm
 
     //se uma das tabelas retornou um valor diferente de 0 para a busca referente ao amil informado, devemos ver qual tabela foi.
 
-    if ($quantidade_alunos != 0) {
+    if ($quantidade_usuario != 0) {
 
         //se foi a tabela aluno que retornou linhas afetadas pela busca pelo email informado, então buscamos o nome do aluno ao qual o email informado pertence.
-        $sql = "SELECT email, nome FROM aluno WHERE email = '$email'";
+        $sql = "SELECT email, nome FROM usuario WHERE email = '$email'";
 
         //executamos o comando sql ($sql).
         $resultado = excutarSQL($mysql, $sql);
@@ -53,37 +47,7 @@ if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_adm
         //atribuimos a variavél usuario ($usuario) os resultados da execução do comando sql ($sql).
         $usuario = mysqli_fetch_assoc($resultado);
     }
-    if ($quantidade_coordenadores != 0) {
-
-        //se foi a tabela do coordenador de curso que retornou linhas afetadas pela busca pelo email informado, antão então buscamos o nome do coordenador ao qual o email informado pertence.
-        $sql = "SELECT email, nome FROM coordenador_curso WHERE email = '$email'";
-
-        //executamos o comando sql ($sql).
-        $resultado = excutarSQL($mysql, $sql);
-
-         //atribuimos a variavél usuario ($usuario) os resultados da execução do comando sql ($sql).
-        $usuario = mysqli_fetch_assoc($resultado);
-    }
-    if ($quantidade_administradores != 0) {
-
-        //no caso se foi a tabela do administrador, ele é uma excessão e acabamos fazendo todo o processo de recuperação da sua senha aqui dentro desse if.
-
-        //buscar pelos dados do administrador ao qual pertence o email informado
-        $sql = "SELECT email FROM administrador WHERE email = '$email'";
-
-        //executar o comando sql ($sql) acima
-        $resultado = excutarSQL($mysql, $sql);
-
-        //atribuir a variavél usuario ($usuario) o valores de do array associativo gerado na busca $sql acima.
-        $usuario = mysqli_fetch_assoc($resultado);
-
-        //bin2hex(random_bytes(50)) é usado para gerar uma string hexadecimal de 100 caracteres, que representa 50 bytes de dados aleatórios.
-
-        //random_bytes(50): Esta função gera uma string contendo 50 bytes de dados aleatórios criptograficamente seguros12. Esses bytes são selecionados de forma completamente aleatória, o que os torna adequados para usos como geração de chaves de criptografia.
-
-        //bin2hex(): Esta função converte os dados binários (os bytes aleatórios gerados) em uma representação hexadecimal. Cada byte é representado por dois caracteres hexadecimais, resultando em uma string de 100 caracteres no total.
-
-        //gerar um token unico
+   
         $token = bin2hex(random_bytes(50));
 
         //incluir da biblioteca do PHPMailer os dados necessários.
@@ -91,7 +55,7 @@ if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_adm
         require_once 'PHPMailer/src/SMTP.php';
 
         //incluir o arquivo de configurações do sistema.
-        include '../config2.php';
+        include 'config2.php';
 
         //Instanciação do Objeto PHPMailer:Cria uma nova instância da classe PHPMailer. Isso significa que você está criando um novo objeto $mail que pode ser usado para enviar emails.
 
@@ -109,7 +73,7 @@ if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_adm
             $mail->Encoding = 'base64'; // Define a codificação do email para base64, que é adequada para conteúdo binário e texto.
             $mail->setLanguage('br'); // Define o idioma para mensagens de erro e outros textos gerados automaticamente para português do Brasil.
             //$mail->SMTPDebug = SMTP::DEBUG_OFF;  //tira as mensagens
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER; //imprime as mensagens
+             //imprime as mensagens
             $mail->isSMTP();                       //envia o email usando SMTP
             $mail->Host = 'smtp.gmail.com';        // Define o servidor SMTP que será usado para enviar o email.
             $mail->SMTPAuth = true;                // Habilita a autenticação SMTP.
@@ -139,7 +103,7 @@ if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_adm
             $mail->Body = 'Olá!<br>
                     Você solicitou a recuperação da sua conta no nosso sistema.
                     Para isso, clique no link abaixo para realizar a troca de senha:<br>
-                    <a href="' . $_SERVER['SERVER_NAME'] . '/jeverson-tcc/recuperarSenha/nova_senha.php?email=' . $usuario['email'] . '&token=' . $token . '">Clique aqui para recuperar o acesso à sua conta!</a><br>
+                    <a href="' . $_SERVER['SERVER_NAME'] . '/tcc_luiz/recuperar_senha/nova_senha.php?email=' . $usuario['email'] . '&token=' . $token . '">Clique aqui para recuperar o acesso à sua conta!</a><br>
                     <br>
                     Atenciosamente<br>
                     Equipe do sistema...'; // Define o corpo do email em HTML.
@@ -267,7 +231,7 @@ if ($quantidade_alunos == 0 && $quantidade_coordenadores == 0 && $quantidade_adm
         echo "Não foi possível enviar o email. 
           Mailer Error: {$mail->ErrorInfo}"; //Esta é uma variável que contém informações detalhadas sobre o erro ocorrido durante a tentativa de envio do email. O uso de {$mail->ErrorInfo} dentro das chaves {} permite que o valor da variável seja inserido na string.
     }
-}
+
 /*
 $email = $_POST['email'];
 $sql = "SELECT * FROM usuario WHERE email='$email'";

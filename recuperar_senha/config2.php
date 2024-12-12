@@ -2,9 +2,9 @@
 
 $config = [
     'host' => 'localhost',
-    'user' => '',
+    'user' => 'root',
     'password' => '',
-    'banco' => '',
-    'email' => '',
-    'senha_email' => '',
+    'banco' => 'tcc_luiz',
+    'email' => 'luiz.2022310970@aluno.iffar.edu.br',
+    'senha_email' => 'wtwj xjjr egag uzmj',
 ];

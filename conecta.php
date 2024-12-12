@@ -8,7 +8,7 @@ function conectar()
 {
 
     //incluir o arquivo com os dados necessários para poder realizar a conexão com o banco de dados jeverson-tcc
-    require_once "recuperar_senha/config.php";
+    require_once "recuperar_senha/config2.php";
 
     //criar a conexão.
     $mysql = mysqli_connect(
