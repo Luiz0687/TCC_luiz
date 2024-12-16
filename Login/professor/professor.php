@@ -1,10 +1,11 @@
 <?php
+
 if(!isset($_SESSION)){
     session_start();
 }
 if(!isset($_SESSION)){
     echo " <script>alert('Você não está logado no sistema!');
-    window.location.href=window.location.origin +'/TCC/index.php';
+    window.location.href=window.location.origin +'/tcc_luiz/index.php';
     </script>";
       die;
  }
@@ -21,7 +22,7 @@ if(!isset($_SESSION)){
     <h1>Página do professor</h1>
     
     <h2><?php
-    echo "Bem vindo professor(a)" . $_SESSION['nome'] . "!";
+    echo "Bem vindo professor(a)" . $_SESSION['usuario'][0];
     ?></h2>
    <a href="../../Crud/crud_projeto/">Crud projeto</a><br><br>
    <a href="../../Crud/crud_frequencia/">Crud frequencia</a><br><br>

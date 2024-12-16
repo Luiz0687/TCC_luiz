@@ -8,14 +8,11 @@ if(!isset($_SESSION)){
    </script>";
      die;
 }
-if($_SESSION['usuario_tipo'] == 1){
-    header('location: professor/professor.php');
-}
-if($_SESSION['usuario_tipo'] == 2){
-    header('location: monitor/monitor.php');
-}
-if($_SESSION['usuario_tipo'] == 3){
-    header('location: aluno/aluno.php');
-}
+if ($_SESSION['usuario'][2] == 1);
+header('location: professor/professor.php');
 
+if ($_SESSION['usuario'][2] == 2);
+header('location: monitor/monitor.php');
 
+if ($_SESSION['usuario'][2] == 3);
+header('location: aluno/aluno.php');

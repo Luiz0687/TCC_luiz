@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
 }
 if(!isset($_SESSION)){
     echo " <script>alert('Você não está logado no sistema!');
-    window.location.href=window.location.origin +'/TCC/index.php';
+    window.location.href=window.location.origin +'/tcc_luiz/index.php';
     </script>";
       die;
  }
@@ -19,9 +19,10 @@ if(!isset($_SESSION)){
 </head>
 <body>
     <h1>Página do aluno</h1>
-    
-    <h2><?php
-    echo "Olá" . " " .$_SESSION['nome'] ;
+ 
+    <h2>
+        <?php
+    echo "Olá" . " " . $_SESSION['usuario'][0];
     ?></h2>
      <a href="listarProjeto.php">Projetos disponiveis</a><br><br>
      <a href="minhaInscricoes.php">Minhas inscrições</a><br><br>

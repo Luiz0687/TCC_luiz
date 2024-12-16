@@ -1,14 +1,13 @@
 <?php
-if(!isset($_SESSION)){
+  if(!isset($_SESSION)){
     session_start();
 }
 if(!isset($_SESSION)){
     echo " <script>alert('Você não está logado no sistema!');
-    window.location.href=window.location.origin +'/TCC/index.php';
+    window.location.href=window.location.origin +'/tcc_luiz/index.php';
     </script>";
       die;
  }
-
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +21,7 @@ if(!isset($_SESSION)){
     <h1>Página do monitor</h1>
     
     <h2><?php
-    echo $_SESSION['nome'];
+     echo "Olá monitor" . " " . $_SESSION['usuario'][0];
     ?></h2>
     <a href="../../index.php">Sair</a>
 </body>

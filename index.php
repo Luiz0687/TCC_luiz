@@ -23,6 +23,7 @@ if ($_POST) {
     $_SESSION['usuario'][0] = $dados['nome'];
     $_SESSION['usuario'][1] = $dados['id_usuario'];
     $_SESSION['usuario'][2] = $dados['usuario_tipo'];
+    //var_dump($dados['usuario_tipo']);die;
 
     if (password_verify($senha, $dados['senha'])) {
         header('location: login/redire.php');
