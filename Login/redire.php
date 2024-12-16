@@ -1,13 +1,8 @@
 <?php
-if(!isset($_SESSION)){
+if(!isset($_SESSION['usuario'])){
     session_start();
 }
-if(!isset($_SESSION)){
-   echo " <script>alert('Você não está logado no sistema!');
-   window.location.href=window.location.origin +'/TCC/index.php';
-   </script>";
-     die;
-}
+
 if ($_SESSION['usuario'][2] == 1);
 header('location: professor/professor.php');
 

@@ -3,12 +3,7 @@
 if(!isset($_SESSION)){
     session_start();
 }
-if(!isset($_SESSION)){
-    echo " <script>alert('Você não está logado no sistema!');
-    window.location.href=window.location.origin +'/tcc_luiz/index.php';
-    </script>";
-      die;
- }
+
 ?>
 
 <!DOCTYPE html>

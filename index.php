@@ -17,23 +17,42 @@ if ($_POST) {
     $quantidade = $execucao->num_rows;
 
     if ($quantidade != 0) {
-        
-    $dados = mysqli_fetch_assoc($execucao);
 
-    $_SESSION['usuario'][0] = $dados['nome'];
-    $_SESSION['usuario'][1] = $dados['id_usuario'];
-    $_SESSION['usuario'][2] = $dados['usuario_tipo'];
-    //var_dump($dados['usuario_tipo']);die;
+        $dados = mysqli_fetch_assoc($execucao);
 
-    if (password_verify($senha, $dados['senha'])) {
-        header('location: login/redire.php');
-    }else {
+        $_SESSION['usuario'][0] = $dados['nome'];
+        $_SESSION['usuario'][1] = $dados['id_usuario'];
+        $_SESSION['usuario'][2] = $dados['usuario_tipo'];
+        //var_dump($dados['usuario_tipo']);die;
 
-        notificacoes(2,"Senha inválida.");
-    }
-    }else {
-        
-        notificacoes(2,"Email está incorreto.");
+        if (password_verify($senha, $dados['senha'])) {
+
+            if ($_SESSION['usuario'][2] == 1) {
+
+                header("location: login/professor/professor.php");
+
+            } else {
+
+                if ($_SESSION['usuario'][2] == 2) {
+
+                    header("location: login/monitor/monitor.php");
+
+                } else {
+
+                    if ($_SESSION['usuario'][2] == 3) {
+
+                        header("location: login/aluno/aluno.php");
+                    }
+                }
+            }
+
+        } else {
+
+            notificacoes(2, "Senha inválida.");
+        }
+    } else {
+
+        notificacoes(2, "Email está incorreto.");
     }
 }
 
@@ -63,26 +82,28 @@ if ($_POST) {
         <hr>
     </form>
 
-    <a href="login/cadastrar.php"><h4>Não possui um cadastro? Crie um agora mesmo!</h4></a>
-    <a href="recuperar_senha/form-recuperar-senha.php"><h4>Esqueceu a sua senha?</h4></a>
+    <a href="login/cadastrar.php">
+        <h4>Não possui um cadastro? Crie um agora mesmo!</h4>
+    </a>
+    <a href="recuperar_senha/form-recuperar-senha.php">
+        <h4>Esqueceu a sua senha?</h4>
+    </a>
     <h4>
-   Professor<br>
-    email - luiz@luiz<br>
-    senha - 1 <br>
-    <hr>
-    Monitor <br>
-    email - jeverson@jeverson<br>
-    senha - 1<br>
-    <hr>
-    Aluno <br>
-    email - roberto@roberto<br>
-    senha - 1<br>
-<hr>
+        Professor<br>
+        email - luiz@luiz<br>
+        senha - 1 <br>
+        <hr>
+        Monitor <br>
+        email - jeverson@jeverson<br>
+        senha - 1<br>
+        <hr>
+        Aluno <br>
+        email - roberto@roberto<br>
+        senha - 1<br>
+        <hr>
 
 
-</h4>
+    </h4>
 </body>
 
 </html>
-
-
