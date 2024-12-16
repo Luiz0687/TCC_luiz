@@ -12,20 +12,33 @@ $conexao = conectar();
 $sql = "SELECT * FROM projeto";
 
 // Executa o Select
-$resultado = mysqli_query($conexao,$sql);
+$resultado = mysqli_query($conexao, $sql);
 
- 
+
 //Lista os itens
 echo '<table border=1>
 <tr>
 <th>Projetos disponiveis</th>
+<th>Opções</th>
 </tr>';
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
-echo '<tr>';    
-echo '<td>'.$dados['nome_projeto'].'</td>';
-echo '</tr>';
+
+    if ($dados['situacao'] == "indisponivel") {
+
+        echo '<tr>';
+        echo '<td>' . $dados['nome_projeto'] . '</td>';
+        echo '<td>' . 'Projeto indisponivel' . '</td>';
+        echo '</tr>';
+
+    } else {
+
+        echo '<tr>';
+        echo '<td>' . $dados['nome_projeto'] . '</td>';
+        echo '<td>' . '<a href="inscricoes.php?id_projeto=' . $dados['id_projeto'] . '">Inscrever-se</a>' . '</td>';
+        echo '</tr>';
+    }
 }
 
-echo '</table>'."<br>";
+echo '</table>' . "<br>";
 echo '<button><a href="aluno.php">Voltar</a></button>';

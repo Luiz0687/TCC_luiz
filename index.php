@@ -19,9 +19,10 @@ if ($_POST) {
     if ($quantidade != 0) {
         
     $dados = mysqli_fetch_assoc($execucao);
-    $_SESSION['usuario_tipo'] = $dados['usuario_tipo'];
-    $user = $dados['nome'];
-    $_SESSION['nome'] = $user;
+
+    $_SESSION['usuario'][0] = $dados['nome'];
+    $_SESSION['usuario'][1] = $dados['id_usuario'];
+    $_SESSION['usuario'][2] = $dados['usuario_tipo'];
 
     if (password_verify($senha, $dados['senha'])) {
         header('location: login/redire.php');

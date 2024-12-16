@@ -22,7 +22,7 @@ $email = $_POST['email'];
 //O comando sql mysqli_fetch_row() é usado para obter uma linha de dados de um conjunto de resultados e retorná-la como um array enumerado
 
 //Verifica se o e-mail informado existe na tabela de alunos.
-$consulta_usuario = excutarSQL($mysql, "SELECT COUNT(*) FROM usuario WHERE email = '$email'");
+$consulta_usuario = executarSQL($mysql, "SELECT COUNT(*) FROM usuario WHERE email = '$email'");
 $quantidade_usuario = mysqli_fetch_row($consulta_usuario)[0];
 
 
@@ -42,7 +42,7 @@ if ($quantidade_usuario == 0 ) {
         $sql = "SELECT email, nome FROM usuario WHERE email = '$email'";
 
         //executamos o comando sql ($sql).
-        $resultado = excutarSQL($mysql, $sql);
+        $resultado = executarSQL($mysql, $sql);
 
         //atribuimos a variavél usuario ($usuario) os resultados da execução do comando sql ($sql).
         $usuario = mysqli_fetch_assoc($resultado);
@@ -127,7 +127,7 @@ if ($quantidade_usuario == 0 ) {
              '$agora', 0)";
 
             //executar o comando sql2 ($sql2) acima.
-            excutarSQL($mysql, $sql2);
+            executarSQL($mysql, $sql2);
         } catch (Exception $e) { //Este bloco captura exceções que foram lançadas no bloco try correspondente. A palavra-chave Exception indica que estamos lidando com exceções gerais. A variável $e armazena a exceção capturada, permitindo que você acesse informações sobre o erro.
             echo "Não foi possível enviar o email. 
           Mailer Error: {$mail->ErrorInfo}"; //Esta é uma variável que contém informações detalhadas sobre o erro ocorrido durante a tentativa de envio do email. O uso de {$mail->ErrorInfo} dentro das chaves {} permite que o valor da variável seja inserido na string.
@@ -226,7 +226,7 @@ if ($quantidade_usuario == 0 ) {
              '$agora', 0)";
 
         //executar o comando sql2 ($sql2) acima.
-        excutarSQL($mysql, $sql2);
+        executarSQL($mysql, $sql2);
     } catch (Exception $e) { //Este bloco captura exceções que foram lançadas no bloco try correspondente. A palavra-chave Exception indica que estamos lidando com exceções gerais. A variável $e armazena a exceção capturada, permitindo que você acesse informações sobre o erro.
         echo "Não foi possível enviar o email. 
           Mailer Error: {$mail->ErrorInfo}"; //Esta é uma variável que contém informações detalhadas sobre o erro ocorrido durante a tentativa de envio do email. O uso de {$mail->ErrorInfo} dentro das chaves {} permite que o valor da variável seja inserido na string.

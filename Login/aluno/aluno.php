@@ -24,7 +24,7 @@ if(!isset($_SESSION)){
     echo "Olá" . " " .$_SESSION['nome'] ;
     ?></h2>
      <a href="listarProjeto.php">Projetos disponiveis</a><br><br>
-     <a href="listarProjeto.php">Minhas inscrições</a><br><br>
+     <a href="minhaInscricoes.php">Minhas inscrições</a><br><br>
      <a href="listarProjeto.php">Minhas frequências</a><br><br>
     <a href="../../index.php">Sair</a>
 </body>

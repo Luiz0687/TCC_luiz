@@ -17,7 +17,7 @@ $mysql = conectar();
 $sql = "SELECT * FROM recuperar_senha WHERE email='$email' AND token='$token'";
 
 //executar o comando sql ($sql).
-$resultado = excutarSQL($mysql, $sql);
+$resultado = executarSQL($mysql, $sql);
 
 //atribuir a variavél recuperar ($recuperar) os valores retornados da execução do comando $sql.
 $recuperar = mysqli_fetch_assoc($resultado);

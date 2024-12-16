@@ -18,7 +18,7 @@ $mysql = conectar();
 $sql = "SELECT * FROM recuperar_senha WHERE email='$email' AND token='$token'";
 
 //executar o comando sql ($sql).
-$resultado = excutarSQL($mysql, $sql);
+$resultado = executarSQL($mysql, $sql);
 
 //atribuir a variavél recuperar ($recuperar) os valores retornados da execução do comando $sql.
 $recuperar = mysqli_fetch_assoc($resultado);
@@ -77,18 +77,18 @@ if ($recuperar == null) {
     //O comando sql mysqli_fetch_row() é usado para obter uma linha de dados de um conjunto de resultados e retorná-la como um array enumerado
 
     // Verifica se o e-mail informado existe na tabela de alunos.
-    $consulta_usuario = excutarSQL($mysql, "SELECT COUNT(*) FROM usuario WHERE email = '$email'");
+    $consulta_usuario = executarSQL($mysql, "SELECT COUNT(*) FROM usuario WHERE email = '$email'");
     $quantidade_usuario = mysqli_fetch_row($consulta_usuario)[0];
 
     if ($quantidade_usuario != 0) {
 
         //se o email pertence a tabela dos alunos, antão atualizamos a senha anterior do aluno para a nova senha.
         $sql2 = "UPDATE usuario SET senha='$nova_senha' WHERE email='$email'";
-        excutarSQL($mysql, $sql2);
+        executarSQL($mysql, $sql2);
 
         //atualizamos o usado de 0 para 1 para informar que esse pedido de recuperação senha já foi usado dentro do limite de tempo.
         $sql3 = "UPDATE recuperar_senha SET usado=1 WHERE email='$email' AND token='$token'";
-        excutarSQL($mysql, $sql3);
+        executarSQL($mysql, $sql3);
 
         echo "Nova senha cadastrada com sucesso! Faça o login para acessar o sistema.<br>";
 

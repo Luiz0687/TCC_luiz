@@ -7,10 +7,10 @@
 function conectar()
 {
 
-    //incluir o arquivo com os dados necessários para poder realizar a conexão com o banco de dados jeverson-tcc
+ 
     require_once "recuperar_senha/config2.php";
 
-    //criar a conexão.
+   
     $mysql = mysqli_connect(
 
         $config['host'],
@@ -33,7 +33,7 @@ function conectar()
 }
 
 //função criada para que não seja feito mysqli_query() toda vez que temos que excutar comandos em sql.
-function excutarSQL($mysql, $sql)
+function executarSQL($mysql, $sql)
 {
 
     $resultado = mysqli_query($mysql, $sql);
