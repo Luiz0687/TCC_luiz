@@ -16,10 +16,10 @@ $conexao = conectar();
 
     <form action="cadastrar.php" method="post">
     Informe o nome do encontro : <input type="text" name="nome_encontro"required><br><br>
-    Informe a descricao do projeto : <input type="text" name="descricao"required><br><br>
-    Informe a data do projeto : <input type="date" name="data" required><br><br>
-    Informe o horario do projeto : <input type="time" name="horario"required><br><br>
-        <input type="submit" value="cadastrar">
+    Informe a descricao do encontro : <input type="text" name="descricao"required><br><br>
+    Informe a data do encontro : <input type="date" name="data" required><br><br>
+    Informe o horario do encontro : <input type="time" name="horario"required><br><br>
+        <input type="submit" value="cadastrar"><br><br>
         <button><a href="index.php">Voltar</a></button>
     </form>
 </body>

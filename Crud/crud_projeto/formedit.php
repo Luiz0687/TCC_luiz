@@ -38,7 +38,7 @@ $dados = mysqli_fetch_assoc($resultado);
     <h4>Edite a situação do projeto</h4>
     <input type="radio" name="situacao" value="indisponivel">Indisponível<br><br>
     <input type="radio" name="situacao" value="disponivel">Disponivel<br><br>
-    <input type="submit" value="Editar"/><br>
+    <input type="submit" value="Editar"/><br><br>
     <button><a href="index.php">Voltar</a></button>
 
 </form>
