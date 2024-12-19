@@ -12,11 +12,11 @@ $conexao = conectar();
 <body>
     <form action="cadastrar.php" method="post">
     Informe o nome do projeto : <input type="text" name="nome_projeto"required><br>
-    <h4>Informe se o projeto está disponivel ou indisponivel.</h4>
+    <h4>Informe o Status do Projeto.</h4>
     <input type="radio" name="situacao" value="indisponivel"required>Indisponível<br><br>
     <input type="radio" name="situacao" value="disponivel"required>Disponivel<br><br>
         <input type="submit" value="cadastrar">
     </form>
 </body>
 </html><br>
-<button><a href="index.php">Voltar</a></button>
+<button><a href="../../Login/professor/professor.php">Voltar</a></button>

@@ -14,19 +14,21 @@ if(!isset($_SESSION)){
     <title>Document</title>
 </head>
 <body>
-    <h1>Página do professor</h1>
-    
     <h2><?php
     echo "Bem vindo professor(a)" . $_SESSION['usuario'][0];
     ?></h2>
-   <a href="../../Crud/crud_projeto/">Crud projeto</a><br><br>
-   <a href="../../Crud/crud_frequencia/">Crud frequencia</a><br><br>
-   <a href="../../Crud/crud_horario/">Crud horario</a><br><br>
-   <a href="../../Crud/crud_encontro/">Crud encontro</a><br><br>
-   <a href="../../Crud/crud_usuario/designar.php">Designar monitor</a><br><br>
-   
+    <h1>Meus Projetos</h1>
+    <h3><a href="../../index.php">Sair</a></h3>
+    <h3><a href="../../perfilProfessor.php">Meu Perfil</a></h3>
+    <h3>Nomes</h3>
+    <h3>Status</h3>
+    <h3>Ações</h3>
+    <a href="../../Crud/crud_projeto/formcad.php">Criar novo Projeto</a>
+    <hr></hr>
 
-<button><a href="../../index.php">Voltar</a></button>
+    <?php
+    require_once('../../Crud/crud_projeto/listar.php')
+    ?>
 
 </body>
 </html>

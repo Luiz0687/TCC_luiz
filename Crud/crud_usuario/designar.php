@@ -15,7 +15,7 @@ echo '<table border=1>
 <th>nome</th>
 <th>Email</th>
 <th>Tipo usuario</th>
-<th>Opções</th>
+<th>Designar monitor</th>
 </tr>';
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
@@ -23,7 +23,11 @@ echo '<tr>';
 echo '<td>'.$dados['nome'].'</td>';
 echo '<td>'.$dados['email'].'</td>';
 echo '<td>'.$dados['usuario_tipo'].'</td>';
-echo '<td> <a href="mudarTipoUsuario.php?id_usuario='.$dados['id_usuario'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
+if('usuario_tipo'== 2){
+    echo "Monitor";
+
+};
+echo '<td> <a href="mudarTipoUsuario.php?id_usuario='.$dados['id_usuario'].'"> Alterar esse usuario para monitor  </a> </td>';
 echo '</tr>';
 }
 

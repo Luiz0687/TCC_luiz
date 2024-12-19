@@ -12,6 +12,6 @@ $situacao = $_POST['situacao'];
 $sql = "INSERT INTO projeto (nome_projeto, situacao) 
 VALUES ('$nome', '$situacao')";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+header("location: ../../Login/professor/professor.php");
 
 ?>

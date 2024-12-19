@@ -13,22 +13,19 @@ $resultado = mysqli_query($conexao,$sql);
 //Lista os itens
 echo '<table border=1>
 <tr>
-<th>Id projeto</th>
-<th>nome</th>
-<th>Situação</th>
-<th colspan=3>Opções</th>
 </tr>';
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
 echo '<tr>';    
-echo '<td>'.$dados['id_projeto'].'</td>';
+
 echo '<td>'.$dados['nome_projeto'].'</td>';
 echo '<td>'.$dados['situacao'].'</td>';
-echo '<td> <a href="formedit.php?id_projeto='.$dados['id_projeto'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-echo '<td> <a href="excluir?id_projeto='.$dados['id_projeto'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
+echo '<td> <a href="../../Crud/crud_encontro/listar.php?id_projeto='.$dados['id_projeto'].'">encontros</a> </td>';
+echo '<td> <a href="../sair.php">finalizar</a></td>';
+echo '<td> <a href="../../Crud/crud_projeto/excluir.php?id_projeto='.$dados['id_projeto'].'">Excluir Projeto</a></td>';
 echo '</tr>';
 }
 
 echo '</table>'."<br>";
-echo '<button><a href="index.php">Voltar</a></button>';
+
 ?>
