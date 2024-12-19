@@ -15,7 +15,7 @@ echo '<table border=1>
 <th>nome</th>
 <th>Email</th>
 <th>Tipo usuario</th>
-<th colspan=3>Opções</th>
+<th>Opções</th>
 </tr>';
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
@@ -23,8 +23,7 @@ echo '<tr>';
 echo '<td>'.$dados['nome'].'</td>';
 echo '<td>'.$dados['email'].'</td>';
 echo '<td>'.$dados['usuario_tipo'].'</td>';
-echo '<td> <a href="formedit.php?id_usuario='.$dados['id_usuario'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-echo '<td> <a href="excluir?id_usuario='.$dados['id_usuario'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
+echo '<td> <a href="mudarTipoUsuario.php?id_usuario='.$dados['id_usuario'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
 echo '</tr>';
 }
 
