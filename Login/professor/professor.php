@@ -19,7 +19,7 @@ if(!isset($_SESSION)){
     ?></h2>
     <h1>Meus Projetos</h1>
     <h3><a href="../../index.php">Sair</a></h3>
-    <h3><a href="../../perfilProfessor.php">Meu Perfil</a></h3>
+    <h3><a href="../../Crud/crud_perfil/inicial.php">Meu Perfil</a></h3>
     <h3>Nomes</h3>
     <h3>Status</h3>
     <h3>Ações</h3>

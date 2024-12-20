@@ -16,9 +16,10 @@ $resultado = mysqli_query($conexao,$sql);
 echo '<table border=1>
 <tr>
 <th>data</th>
-<th>horario</th>
-<th colspan=3>Opções</th>
+<th>CH</th>
+<th colspan=3>Ações</th>
 </tr>';
+
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
 echo '<tr>';    
@@ -29,6 +30,7 @@ echo '<td> <a href="formedit.php?id_encontro='.$dados['id_encontro'].'"> <img sr
 echo '<td> <a href="excluir?id_encontro='.$dados['id_encontro'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
 echo '</tr>';
 }
+echo '<a href="../../Crud/crud_encontro/formcad.php?id_projeto='.$id_projeto.'">Inserir encontro</a>';
 
 echo '</table>'."<br>";
 echo '<button><a href="../../login/professor/professor.php">Voltar</a></button>';
