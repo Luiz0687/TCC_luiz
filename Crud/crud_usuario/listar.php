@@ -32,5 +32,5 @@ echo '</tr>';
 }
 
 echo '</table>'."<br>";
-echo '<button><a href="../../login/professor/professor.php">Voltar</a></button>';
+echo '<button><a href="../../Crud/crud_encontro/listar.php">Voltar</a></button>';
 ?>

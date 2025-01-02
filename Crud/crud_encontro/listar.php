@@ -26,12 +26,14 @@ echo '<tr>';
 echo '<td>'.$dados['data'].'</td>';
 echo '<td>'.$dados['horario'].'</td>';
 
-echo '<td> <a href="formedit.php?id_encontro='.$dados['id_encontro'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
+echo '<td> <a href="../crud_usuario/listar.php">Frequência</a> </td>';
+
 echo '<td> <a href="excluir?id_encontro='.$dados['id_encontro'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
 echo '</tr>';
 }
-echo '<a href="../../Crud/crud_encontro/formcad.php?id_projeto='.$id_projeto.'">Inserir encontro</a>';
 
 echo '</table>'."<br>";
+echo '<a href="../../Crud/crud_encontro/formcad.php?id_projeto='.$id_projeto.'">Inserir encontro</a>' . "<br><br>";
+
 echo '<button><a href="../../login/professor/professor.php">Voltar</a></button>';
 ?>
