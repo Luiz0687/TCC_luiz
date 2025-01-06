@@ -72,12 +72,11 @@ if ($_POST) {
 
     <?php
     exibirNotificacoes();
-
     limpaNotificacoes();
     ?>
     <form action="" method="post">
-        <label>Email : <input type="email" name="email" id="" required></label><br><br>
-        <label>Senha : <input type="password" name="senha" id="" required></label><br><br>
+     <label>Email  <br> <input type="email" name="email" id="" required></label><br><br>
+        <label>Senha  <br> <input type="password" name="senha" id="" required></label><br><br>
         <input type="submit" value="Login">
         <hr>
     </form>

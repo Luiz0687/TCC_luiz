@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 
 
 require_once "../conecta.php";
+require_once "../notificacao/funcaoNotificacao.php";
 
 
 $mysql = conectar();
@@ -13,6 +14,16 @@ $mysql = conectar();
 
 $email = $_POST['email'];
 
+function validarEmail($email)
+{
+    return preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/', $email);
+}
+if (validarEmail($email)) {
+} else {
+    notificacoes(2, "O e-mail é inválido!");
+    header("location:form-recuperar-senha.php");
+    die();
+}
 
 $consulta_usuario = executarSQL($mysql, "SELECT COUNT(*) FROM usuario WHERE email = '$email'");
 $quantidade_usuario = mysqli_fetch_row($consulta_usuario)[0];

@@ -1,3 +1,9 @@
+<?php
+require_once "../notificacao/funcaoNotificacao.php";
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,7 +22,10 @@
 <body>
 
     <h1>Recuperar senha</h1>
-
+     <?php
+     exibirNotificacoes();
+     limpaNotificacoes();
+     ?>
     <p>Digite o seu email para que você possa criar uma nova senha.</p>
     <p>Será enviado um email com um link de recuperação que você usurá para criar uma nova senha.</p>
 
