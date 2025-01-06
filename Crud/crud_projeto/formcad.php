@@ -1,4 +1,7 @@
 <?php
+
+require_once "../../notificacao/funcaoNotificacao.php";
+
 require_once("../../conecta.php");
 $conexao = conectar();
 ?>
@@ -11,6 +14,8 @@ $conexao = conectar();
 </head>
 <body>
     <form action="cadastrar.php" method="post">
+
+    <input type="hidden" name="id_professor" value="<?php echo $_SESSION['usuario'][1] ?>">
     Informe o nome do projeto : <input type="text" name="nome_projeto"required><br>
     <h4>Informe o Status do Projeto.</h4>
     <input type="radio" name="situacao" value="indisponivel"required>Indisponível<br><br>
