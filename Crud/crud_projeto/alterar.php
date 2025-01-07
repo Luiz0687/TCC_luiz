@@ -5,9 +5,9 @@ require_once("../../conecta.php");
 $conexao = conectar();
 
 // receber os dados do formulário
-$id_projeto = $_GET['id_projeto'];
-$nome= $_GET['nome_projeto'];
-$situacao= $_GET['situacao'];
+$id_projeto = $_POST['id_projeto'];
+$nome= $_POST['nome_projeto'];
+$situacao= $_POST['situacao'];
 
 $sql = "UPDATE projeto SET 
 nome_projeto = '$nome', situacao = '$situacao' WHERE id_projeto = $id_projeto";

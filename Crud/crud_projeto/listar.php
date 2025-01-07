@@ -22,15 +22,21 @@ if ($quantidade_linha == 0) {
 </tr>';
 
     while ($dados = mysqli_fetch_assoc($resultado)) {
-        echo '<tr>';
-
-        echo '<td>' . $dados['nome_projeto'] . '</td>';
-        echo '<td>' . $dados['situacao'] . '</td>';
-        echo '<td> <a href="../../Crud/crud_encontro/listar.php?id_projeto=' . $dados['id_projeto'] . '">encontros</a> </td>';
-        echo '<td> <a href="../../Crud/crud_projeto/finalizar.php?id_projeto=' . $dados['id_projeto'] . '">finalizar</a></td>';
-        echo '<td> <a href="../../Crud/crud_projeto/excluir.php?id_projeto=' . $dados['id_projeto'] . '">Excluir Projeto</a></td>';
-        echo '</tr>';
+        if ($dados['situacao'] == "disponivel") {
+            echo '<tr>';
+            echo '<td>' . $dados['nome_projeto'] . '</td>';
+            echo '<td>' . $dados['situacao'] . '</td>';
+            echo '<td> <a href="../../Crud/crud_encontro/listar.php?id_projeto=' . $dados['id_projeto'] . '">encontros</a> </td>';
+            echo '<td> <a href="../../Crud/crud_projeto/finalizar.php?id_projeto=' . $dados['id_projeto'] . '">finalizar</a></td>';
+            echo '<td> <a href="../../Crud/crud_projeto/excluir.php?id_projeto=' . $dados['id_projeto'] . '">Excluir Projeto</a></td>';
+            echo '</tr>';
+        }else{
+            echo '<tr>';
+            echo '<td>' . $dados['nome_projeto'] . '</td>';
+            echo '<td>' . $dados['situacao'] . '</td>';
+            echo '<td> <a href="../../Crud/crud_projeto/certificado.php?id_projeto=' . $dados['id_projeto'] . '"> Certificado </a></td>';
+            echo '</tr>';
+        }
     }
-
     echo '</table>' . "<br>";
 }
