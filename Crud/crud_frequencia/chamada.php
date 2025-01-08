@@ -89,6 +89,9 @@ if (!empty($dadosAlunos)) {
 
 
 
+
+
+
 //listar alunos com freqauencia
 $sql = "SELECT * FROM  usuario inner join frequencia on frequencia.fk_usuario_id_usuario = usuario.id_usuario where fk_id_encontro = " . $id_encontro;
 
@@ -112,7 +115,7 @@ echo '</tr>';
 }
 
 echo '</table>'."<br>";
-echo '<button><a href="index.php">Voltar</a></button>';
+echo '<button><a href="../crud_encontro/listar.php">Voltar</a></button>';
 ?>
 
 
