@@ -50,7 +50,6 @@ $resultadoEncontro =  mysqli_query($conexao, $sqlEncontro);
 // Gera o vetor com os dados buscados
 $dadosEncontro = mysqli_fetch_assoc($resultadoEncontro );
 
-
 $sqlAlunos = "select * from usuario inner join usuario_projeto on usuario_projeto.fk_usuario_id_usuario = usuario.id_usuario  "  . 
                     "where usuario_projeto.fk_projeto_id_projeto = " . $dadosEncontro["fk_id_projeto"];
 
@@ -115,7 +114,7 @@ echo '</tr>';
 }
 
 echo '</table>'."<br>";
-echo '<button><a href="../crud_encontro/listar.php">Voltar</a></button>';
+echo '<button><a href="../crud_encontro/listar.php?id_projeto='.$dadosEncontro['fk_id_projeto'].'">Voltar</a></button>';
 ?>
 
 
