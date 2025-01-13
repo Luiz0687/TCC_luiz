@@ -66,7 +66,7 @@ if (mysqli_num_rows($resultadoAlunos) > 0) {
         echo '</div>';
     }
 } else {
-    echo '<p>Todos os alunos já possuem presença registrada.</p>';
+    echo '<p>Não há mais alunos !</p>';
 }
 
 // Listar alunos com presença registrada
