@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 07-Jan-2025 às 20:53
+-- Tempo de geração: 13-Jan-2025 às 16:19
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,8 +33,9 @@ CREATE TABLE IF NOT EXISTS `encontro` (
   `horario` time DEFAULT NULL,
   `data` date DEFAULT NULL,
   `fk_id_projeto` int NOT NULL,
-  PRIMARY KEY (`id_encontro`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id_encontro`),
+  KEY `fk_id_projeto` (`fk_id_projeto`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `encontro`
@@ -46,7 +47,8 @@ INSERT INTO `encontro` (`id_encontro`, `horario`, `data`, `fk_id_projeto`) VALUE
 (21, '15:02:00', '2024-12-18', 12),
 (22, '16:03:00', '2024-12-03', 13),
 (23, '17:46:00', '2025-01-08', 32),
-(24, '12:12:00', '1211-12-12', 32);
+(24, '12:12:00', '1211-12-12', 32),
+(25, '13:59:00', '2025-01-15', 33);
 
 -- --------------------------------------------------------
 
@@ -59,18 +61,19 @@ CREATE TABLE IF NOT EXISTS `frequencia` (
   `id_frequencia` int NOT NULL AUTO_INCREMENT,
   `fk_id_encontro` int DEFAULT NULL,
   `fk_usuario_id_usuario` int DEFAULT NULL,
-  PRIMARY KEY (`id_frequencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id_frequencia`),
+  KEY `fk_id_encontro` (`fk_id_encontro`),
+  KEY `fk_usuario_id_usuario` (`fk_usuario_id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `frequencia`
 --
 
 INSERT INTO `frequencia` (`id_frequencia`, `fk_id_encontro`, `fk_usuario_id_usuario`) VALUES
-(6, 23, 67),
-(15, 23, 66),
-(16, 23, 68),
-(17, 24, 68);
+(17, 24, 68),
+(40, 23, 68),
+(41, 23, 63);
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,8 @@ CREATE TABLE IF NOT EXISTS `horario` (
   `cod_semana` int DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `fk_projeto_id_projeto` int DEFAULT NULL,
-  PRIMARY KEY (`id_horario`)
+  PRIMARY KEY (`id_horario`),
+  KEY `fk_projeto_id_projeto` (`fk_projeto_id_projeto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -107,7 +111,8 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `nome_projeto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `situacao` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `fk_projeto_id_professor` int NOT NULL,
-  PRIMARY KEY (`id_projeto`)
+  PRIMARY KEY (`id_projeto`),
+  KEY `fk_projeto_id_professor` (`fk_projeto_id_professor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -115,16 +120,16 @@ CREATE TABLE IF NOT EXISTS `projeto` (
 --
 
 INSERT INTO `projeto` (`id_projeto`, `nome_projeto`, `situacao`, `fk_projeto_id_professor`) VALUES
-(12, 'Clube de damas', 'disponivel', 0),
-(13, 'Clube de Xadrez', 'disponivel', 0),
-(14, 'Feira de Ciências', 'disponivel', 0),
-(15, 'Oficina de Robótica', 'disponivel', 0),
-(16, 'Projeto de Leitura', 'disponivel', 0),
-(17, 'Grupo de Teatro Escolar', 'indisponivel', 0),
-(18, 'Jornal Estudantil', 'disponivel', 0),
-(19, 'Horta Comunitária', 'disponivel', 0),
-(20, 'Aulas de Música', 'disponivel', 0),
-(23, 'Libras', 'indisponivel', 0),
+(12, 'Clube de damas', 'disponivel', 61),
+(13, 'Clube de Xadrez', 'disponivel', 61),
+(14, 'Feira de Ciências', 'disponivel', 61),
+(15, 'Oficina de Robótica', 'disponivel', 61),
+(16, 'Projeto de Leitura', 'disponivel', 61),
+(17, 'Grupo de Teatro Escolar', 'indisponivel', 61),
+(18, 'Jornal Estudantil', 'disponivel', 61),
+(19, 'Horta Comunitária', 'disponivel', 61),
+(20, 'Aulas de Música', 'disponivel', 61),
+(23, 'Libras', 'indisponivel', 61),
 (32, 'Projeto de pc', 'disponivel', 61),
 (33, 'projeto de poker', 'disponivel', 61);
 
@@ -198,7 +203,9 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`, `usuario_tipo`) V
 DROP TABLE IF EXISTS `usuario_projeto`;
 CREATE TABLE IF NOT EXISTS `usuario_projeto` (
   `fk_usuario_id_usuario` int DEFAULT NULL,
-  `fk_projeto_id_projeto` int DEFAULT NULL
+  `fk_projeto_id_projeto` int DEFAULT NULL,
+  KEY `fk_usuario_projeto_id_usuario` (`fk_usuario_id_usuario`),
+  KEY `fk_usuario_projeto_id_projeto` (`fk_projeto_id_projeto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -219,6 +226,42 @@ INSERT INTO `usuario_projeto` (`fk_usuario_id_usuario`, `fk_projeto_id_projeto`)
 (66, 32),
 (67, 32),
 (68, 32);
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `encontro`
+--
+ALTER TABLE `encontro`
+  ADD CONSTRAINT `fk_id_projeto` FOREIGN KEY (`fk_id_projeto`) REFERENCES `projeto` (`id_projeto`);
+
+--
+-- Limitadores para a tabela `frequencia`
+--
+ALTER TABLE `frequencia`
+  ADD CONSTRAINT `fk_id_encontro` FOREIGN KEY (`fk_id_encontro`) REFERENCES `encontro` (`id_encontro`),
+  ADD CONSTRAINT `fk_usuario_id_usuario` FOREIGN KEY (`fk_usuario_id_usuario`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Limitadores para a tabela `horario`
+--
+ALTER TABLE `horario`
+  ADD CONSTRAINT `fk_projeto_id_projeto` FOREIGN KEY (`fk_projeto_id_projeto`) REFERENCES `projeto` (`id_projeto`);
+
+--
+-- Limitadores para a tabela `projeto`
+--
+ALTER TABLE `projeto`
+  ADD CONSTRAINT `fk_projeto_id_professor` FOREIGN KEY (`fk_projeto_id_professor`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Limitadores para a tabela `usuario_projeto`
+--
+ALTER TABLE `usuario_projeto`
+  ADD CONSTRAINT `fk_usuario_projeto_id_projeto` FOREIGN KEY (`fk_projeto_id_projeto`) REFERENCES `projeto` (`id_projeto`),
+  ADD CONSTRAINT `fk_usuario_projeto_id_usuario` FOREIGN KEY (`fk_usuario_id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

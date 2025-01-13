@@ -19,7 +19,7 @@ $email = $_POST['email'];
 
     notificacoes(2, "O email já existe no sistema!");
 
-    header("location:../inicial.php");
+    header("location:inicial.php");
 
      die();
      

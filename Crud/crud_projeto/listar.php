@@ -34,7 +34,7 @@ if ($quantidade_linha == 0) {
             echo '<tr>';
             echo '<td>' . $dados['nome_projeto'] . '</td>';
             echo '<td>' . $dados['situacao'] . '</td>';
-            echo '<td> <a href="../../certificado/certificado.php?id_projeto=' . $dados['id_projeto'] . '"> Certificado </a></td>';
+            echo '<td> <a href="../../certificado.php?id_projeto=' . $dados['id_projeto'] . '"> Certificado </a></td>';
             echo '</tr>';
         }
     }

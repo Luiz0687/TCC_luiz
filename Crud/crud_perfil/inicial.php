@@ -47,8 +47,6 @@ limpaNotificacoes();
 
         <input type="submit" value="Alterar perfil"><br><br>
 
-        <button><a href="crud/excluirPerfil.php">Excluir sua conta</a></button><br><br>
-
         <button><a href="../../login/professor/professor.php">Voltar</a></button>
     </form>
     
