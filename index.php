@@ -87,22 +87,6 @@ if ($_POST) {
     <a href="recuperar_senha/form-recuperar-senha.php">
         <h4>Esqueceu a sua senha?</h4>
     </a>
-    <h4>
-        Professor<br>
-        email - luiz@luiz<br>
-        senha - 1 <br>
-        <hr>
-        Monitor <br>
-        email - jeverson@jeverson<br>
-        senha - 1<br>
-        <hr>
-        Aluno <br>
-        email - roberto@roberto<br>
-        senha - 1<br>
-        <hr>
-
-
-    </h4>
-</body>
+   
 
 </html>
