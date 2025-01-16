@@ -1,4 +1,5 @@
 <?php
+require_once "../notificacao/funcaoNotificacao.php";
 require_once "../conecta.php";
 $conexao = conectar();
 if ($_POST) {
@@ -27,16 +28,16 @@ if ($_POST) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>Cadastre-se</h1>
+
+		
+	
+
+
+
+
+
+<!----<h1>Cadastre-se</h1>
     <form action="" method="post">
         <input type="hidden" name="usuario_tipo" value="3">
         Nome do usuário: <input type="text" name="nome" id="nome" required> <br><br>

@@ -1,108 +1,216 @@
-<div class="certificate-container">
-    <style>body {
-    font-family: Roboto;
+
+<!DOCTYPE html>
+<html lang='pt-BR' class=''>
+
+<head>
+
+  <meta charset='UTF-8'>
+  <title>Certificado</title>
+
+  
+
+  <style id="INLINE_PEN_STYLESHEET_ID">
+    * {
+  box-sizing: border-box;
 }
 
-.certificate-container {
-    padding: 50px;
-    width: 1024px;
-}
-.certificate {
-    border: 20px solid #0C5280;
-    padding: 25px;
-    height: 600px;
-    position: relative;
+@media print{
+  .no-print, .no-print *{
+    display: none !important;
+  } 
+  .print-m-0{
+    margin: 0 !important;
+  }
+} 
+
+.btn{
+  padding: 10px 17px; 
+  border-radius: 3px; 
+  background: #f4b71a; 
+  border: none; 
+  font-size: 12px; 
+  margin: 10px 5px;
 }
 
-.certificate:after {
-    content: '';
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    position: absolute;
-    background-image: url(https://image.ibb.co/ckrVv7/water_mark_logo.png);
-    background-size: 100%;
-    z-index: -1;
+.toolbar{
+  background: #333; 
+  width: 100vw; 
+  position: fixed; 
+  left: 0; 
+  top: 0; 
+  text-align: center;
 }
 
-.certificate-header > .logo {
-    width: 80px;
-    height: 80px;
+.cert-container {
+  margin:65px 0 10px 0; 
+  width: 100%; 
+  display: flex; 
+  justify-content: center;
 }
 
-.certificate-title {
-    text-align: center;    
+.cert {
+  width:800px; 
+  height:600px; 
+  padding:15px 20px; 
+  text-align:center; 
+  position: relative; 
+  z-index: -1;
 }
 
-.certificate-body {
-    text-align: center;
+.cert-bg {
+  position: absolute; 
+  left: 0px; 
+  top: 0; 
+  z-index: -1;
+  width: 100%;
+}
+
+.cert-content {
+  width:750px; 
+  height:470px; 
+  padding:110px 60px 0px 60px; 
+  text-align:center;
+  font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 h1 {
-
-    font-weight: 400;
-    font-size: 48px;
-    color: #0C5280;
+  font-size:44px;
 }
 
-.student-name {
-    font-size: 24px;
+p {
+  font-size:25px;
 }
 
-.certificate-content {
-    margin: 0 auto;
-    width: 750px;
+small {
+  font-size: 14px;
+  line-height: 12px;
 }
 
-.about-certificate {
-    width: 380px;
-    margin: 0 auto;
+.bottom-txt {
+  padding: 12px 5px; 
+  display: flex; 
+  justify-content: space-between;
+  font-size: 16px;
 }
 
-.topic-description </style>
-    <div class="certificate">
-        <div class="water-mark-overlay"></div>
-        <div class="certificate-header">
-            <img src="https://rnmastersreview.com/img/logo.png" class="logo" alt="">
+.bottom-txt * {
+  white-space: nowrap !important;
+}
+
+.other-font {
+  font-family: Cambria, Georgia, serif;
+  font-style: italic;
+}
+
+.ml-215 {
+  margin-left: 215px;
+}
+  </style>
+
+  
+</head>
+
+<body>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    
+  
+
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Imprimir Certificado
+      </button>
+      <button class="btn btn-info" id="downloadPDF">Baixar em PDF</button>
+    </div>
+    <div class="cert-container print-m-0">
+      <div id="content2" class="cert">
+        <img
+          src="./Style/images/fundocertificado.png"
+          class="cert-bg"
+          alt=""
+        />
+        <div class="cert-content">
+          <h1 class="other-font">Certificado</h1>
+          <span style="font-size: 30px;">Luiz Alberto dos Santos Pacheco</span>
+          <br /><br />
+          <span class="other-font"
+            ><i><b>participou do(a)</b></i></span
+          >
+          <br />
+          <span style="font-size: 30px;"><b>Projeto matBásica - Oficinas de Matemática Básica</b></span>
+          <br /><br>
+    
+          <small
+            >sob orientação do servidor <b>Favildo da Silva Sauro</b>, completando <b>700h</b> de participação efetiva.</small
+          ><br /><br />
+          <div class="bottom-txt">
+            <span>ID de Verificação: 12</span>
+            <span>Emitido em: 20/12/2024</span>
+          </div>
         </div>
-        <div class="certificate-body">
-           
-            <p class="certificate-title"><strong>RENR NCLEX AND CONTINUING EDUCATION (CME) Review Masters</strong></p>
-            <h1>Certificate of Completion</h1>
-            <p class="student-name">Matthew Taylor</p>
-            <div class="certificate-content">
-                <div class="about-certificate">
-                    <p>
-                has completed [hours] hours on topic title here online on Date [Date of Completion]
-                </p>
-                </div>
-                <p class="topic-title">
-                    The Topic consists of [hours] Continuity hours and includes the following:
-                </p>
-                <div class="text-center">
-                    <p class="topic-description text-muted">Contract adminitrator - Types of claim - Claim Strategy - Delay analysis - Thepreliminaries to a claim - The essential elements to a successful claim - Responses - Claim preparation and presentation </p>
-                </div>
-            </div>
-            <div class="certificate-footer text-muted">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Principal: ______________________</p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>
-                                    Accredited by
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>
-                                    Endorsed by
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
+      </div>
+    </div>
 
+  
+<script>
+$("#downloadPDF").click(function () {
+  // $("#content2").addClass('ml-215'); // JS solution for smaller screen but better to add media queries to tackle the issue
+  getScreenshotOfElement(
+    $("div#content2").get(0),
+    0,
+    0,
+    $("#content2").width() + 45,  // added 45 because the container's (content2) width is smaller than the image, if it's not added then the content from right side will get cut off
+    $("#content2").height() + 30, // same issue as above. if the container width / height is changed (currently they are fixed) then these values might need to be changed as well.
+    function (data) {
+      var pdf = new jsPDF("l", "pt", [
+        $("#content2").width(),
+        $("#content2").height(),
+      ]);
+
+      pdf.addImage(
+        "data:image/png;base64," + data,
+        "PNG",
+        0,
+        0,
+        $("#content2").width(),
+        $("#content2").height()
+      );
+      pdf.save("certificado.pdf");
+    }
+  );
+});
+
+// this function is the configuration of the html2cavas library (https://html2canvas.hertzen.com/)
+// $("#content2").removeClass('ml-215'); is the only custom line here, the rest comes from the library.
+function getScreenshotOfElement(element, posX, posY, width, height, callback) {
+  html2canvas(element, {
+    onrendered: function (canvas) {
+      // $("#content2").removeClass('ml-215');  // uncomment this if resorting to ml-125 to resolve the issue
+      var context = canvas.getContext("2d");
+      var imageData = context.getImageData(posX, posY, width, height).data;
+      var outputCanvas = document.createElement("canvas");
+      var outputContext = outputCanvas.getContext("2d");
+      outputCanvas.width = width;
+      outputCanvas.height = height;
+
+      var idata = outputContext.createImageData(width, height);
+      idata.data.set(imageData);
+      outputContext.putImageData(idata, 0, 0);
+      callback(outputCanvas.toDataURL().replace("data:image/png;base64,", ""));
+    },
+    width: width,
+    height: height,
+    useCORS: true,
+    taintTest: false,
+    allowTaint: false,
+  });
+}
+
+
+</script>
+</body>
+
+</html>

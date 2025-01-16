@@ -1,64 +1,3 @@
-<?php
-include_once("notificacao/funcaoNotificacao.php");
-include_once("conecta.php");
-$conexao = conectar();
-
-if ($_POST) {
-
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    //verificar se o email existe no banco de dados.
-    $sql = "SELECT * FROM usuario WHERE email = '$email'";
-
-    //excutar o comando $sql_busca.
-    $execucao = mysqli_query($conexao, $sql);
-
-    $quantidade = $execucao->num_rows;
-
-    if ($quantidade != 0) {
-
-        $dados = mysqli_fetch_assoc($execucao);
-
-        $_SESSION['usuario'][0] = $dados['nome'];
-        $_SESSION['usuario'][1] = $dados['id_usuario'];
-        $_SESSION['usuario'][2] = $dados['usuario_tipo'];
-        //var_dump($dados['usuario_tipo']);die;
-
-        if (password_verify($senha, $dados['senha'])) {
-
-            if ($_SESSION['usuario'][2] == 1) {
-
-                header("location: login/professor/professor.php");
-
-            } else {
-
-                if ($_SESSION['usuario'][2] == 2) {
-
-                    header("location: login/monitor/monitor.php");
-
-                } else {
-
-                    if ($_SESSION['usuario'][2] == 3) {
-
-                        header("location: login/aluno/aluno.php");
-                    }
-                }
-            }
-
-        } else {
-
-            notificacoes(2, "Senha inválida.");
-        }
-    } else {
-
-        notificacoes(2, "Email está incorreto.");
-    }
-}
-
-?>
-
-
 
 <!DOCTYPE html>
 <html lang='pt-BR' class=''>
@@ -253,6 +192,7 @@ section .container.active .signinBx .imgBx {
 }
   </style>
 
+  
 
 </head>
 
@@ -261,16 +201,16 @@ section .container.active .signinBx .imgBx {
   <section>
     <div class="container">
       <div class="user signinBx">
-        <div class="imgBx"><img src="Style/images/logsbot.jpg" alt="" /></div>
+        <div class="imgBx"><img src="../Style/images/logsbot.jpg" alt="" /></div>
         <div class="formBx">
-          <form action="Login/professor/professor.php" onsubmit="return false;"> 
+          <form action="" onsubmit="return false;"> 
             <h2>Fazer Login</h2>
-            <input type="text" name="email" placeholder="e-mail" />
-            <input type="password" name="senha" placeholder="senha" />
-            <input type="submit" value="Entrar"/>
+            <input type="text" name="" placeholder="e-mail" />
+            <input type="password" name="" placeholder="senha" />
+            <input type="submit" name="" value="Entrar" />
             <p class="signup">
              Esqueceu a senha ?
-              <a href="recuperar_senha/form-recuperar-senha.php" >Recuperar.</a>
+              <a href="#" >Recuperar.</a>
             </p>
             <p class="signup">
               Ainda não tem uma conta ?
@@ -283,10 +223,10 @@ section .container.active .signinBx .imgBx {
         <div class="formBx">
           <form action="" onsubmit="return false;">
             <h2>Registrar</h2>
-            <input type="text" name="nome" placeholder="nome" />
-            <input type="email" name="email" placeholder="e-mail" />
-            <input type="password" name="senha" placeholder="senha" />
-            <input type="password" name="confirmSenha" placeholder="confirme senha" />
+            <input type="text" name="" placeholder="nome" />
+            <input type="email" name="" placeholder="e-mail" />
+            <input type="password" name="" placeholder="senha" />
+            <input type="password" name="" placeholder="confirme senha" />
             <input type="submit" name="" value="Cadastrar" />
             <p class="signup">
               Já tem uma conta ?
@@ -294,7 +234,7 @@ section .container.active .signinBx .imgBx {
             </p>
           </form>
         </div>
-        <div class="imgBx"><img src="Style/images/logsbot.jpg" alt="" /></div>
+        <div class="imgBx"><img src="../Style/images/logsbot.jpg" alt="" /></div>
       </div>
     </div>
   </section>
