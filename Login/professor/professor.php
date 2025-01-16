@@ -107,6 +107,7 @@ require_once "../../notificacao/funcaoNotificacao.php";
         });
     </script>
 
+<!-- Modal Trigger -->
 
 </body>
 

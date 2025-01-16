@@ -1,42 +1,108 @@
-<?php
-require('certificado/fpdf/fpdf.php');
+<div class="certificate-container">
+    <style>body {
+    font-family: Roboto;
+}
 
-// Dados do certificado
-$nomeAluno = "João da Silva"; // Substitua por uma variável dinâmica
-$nomeProjeto = "Desenvolvimento Web Full Stack"; // Substitua por uma variável dinâmica
-$cargaHoraria = 40; // Substitua pela carga horária total
-$dataAtual = date("d/m/Y");
+.certificate-container {
+    padding: 50px;
+    width: 1024px;
+}
+.certificate {
+    border: 20px solid #0C5280;
+    padding: 25px;
+    height: 600px;
+    position: relative;
+}
 
-// Criando o PDF
-$pdf = new FPDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 16);
+.certificate:after {
+    content: '';
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: absolute;
+    background-image: url(https://image.ibb.co/ckrVv7/water_mark_logo.png);
+    background-size: 100%;
+    z-index: -1;
+}
 
-// Cabeçalho
-$pdf->SetXY(10, 10);
-$pdf->Cell(190, 20, "CERTIFICADO DE PARTICIPAÇÃO", 0, 1, 'C');
+.certificate-header > .logo {
+    width: 80px;
+    height: 80px;
+}
 
-// Corpo do certificado
-$pdf->SetFont('Arial', '', 12);
-$pdf->Ln(20);
-$texto = "Certificamos que o(a) aluno(a) $nomeAluno participou do projeto \"$nomeProjeto\", com carga horária total de $cargaHoraria horas, conforme os parâmetros definidos no projeto.";
-$pdf->MultiCell(0, 10, $texto, 0, 'J');
+.certificate-title {
+    text-align: center;    
+}
 
-$pdf->Ln(20);
-$pdf->MultiCell(0, 10, "A sua dedicação e esforço são dignos de reconhecimento. Parabéns pelo desempenho!", 0, 'J');
+.certificate-body {
+    text-align: center;
+}
 
-// Assinatura e data
-$pdf->Ln(30);
-$pdf->Cell(0, 10, "Emitido em: $dataAtual", 0, 1, 'L');
-$pdf->Ln(10);
-$pdf->Cell(0, 10, "_________________________", 0, 1, 'L');
-$pdf->Cell(0, 10, "Coordenador do Projeto", 0, 1, 'L');
+h1 {
 
-// Rodapé
-$pdf->SetY(-30);
-$pdf->SetFont('Arial', 'I', 8);
-$pdf->Cell(0, 10, "Certificado gerado automaticamente pelo sistema.", 0, 0, 'C');
+    font-weight: 400;
+    font-size: 48px;
+    color: #0C5280;
+}
 
-// Salvar o PDF
-$pdf->Output('I', 'Certificado.pdf');
-?>
+.student-name {
+    font-size: 24px;
+}
+
+.certificate-content {
+    margin: 0 auto;
+    width: 750px;
+}
+
+.about-certificate {
+    width: 380px;
+    margin: 0 auto;
+}
+
+.topic-description </style>
+    <div class="certificate">
+        <div class="water-mark-overlay"></div>
+        <div class="certificate-header">
+            <img src="https://rnmastersreview.com/img/logo.png" class="logo" alt="">
+        </div>
+        <div class="certificate-body">
+           
+            <p class="certificate-title"><strong>RENR NCLEX AND CONTINUING EDUCATION (CME) Review Masters</strong></p>
+            <h1>Certificate of Completion</h1>
+            <p class="student-name">Matthew Taylor</p>
+            <div class="certificate-content">
+                <div class="about-certificate">
+                    <p>
+                has completed [hours] hours on topic title here online on Date [Date of Completion]
+                </p>
+                </div>
+                <p class="topic-title">
+                    The Topic consists of [hours] Continuity hours and includes the following:
+                </p>
+                <div class="text-center">
+                    <p class="topic-description text-muted">Contract adminitrator - Types of claim - Claim Strategy - Delay analysis - Thepreliminaries to a claim - The essential elements to a successful claim - Responses - Claim preparation and presentation </p>
+                </div>
+            </div>
+            <div class="certificate-footer text-muted">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Principal: ______________________</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    Accredited by
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    Endorsed by
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+
