@@ -24,11 +24,11 @@ echo '<table border=1>
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
 
-    if ($dados['situacao'] == "indisponivel") {
+    if ($dados['situacao'] == "Inativo") {
 
         echo '<tr>';
         echo '<td>' . $dados['nome_projeto'] . '</td>';
-        echo '<td>' . 'Projeto indisponivel' . '</td>';
+        echo '<td>' . 'Projeto Inativo' . '</td>';
         echo '</tr>';
 
     } else {

@@ -33,7 +33,7 @@ if ($quantidade_linha == 0) {
             <?php
 
             while ($dados = mysqli_fetch_assoc($resultado)) {
-                if ($dados['situacao'] == "disponivel") {
+                if ($dados['situacao'] == "Ativo") {
                     echo '<tr>';
                     echo '<td>' . $dados['nome_projeto'] . '</td>';
                     echo '<td>' . '<i class="material-icons left" style="color: #05CA5D;">brightness_1</i>' . $dados['situacao'] . '</td>';

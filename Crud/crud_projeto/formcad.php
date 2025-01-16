@@ -18,8 +18,8 @@ $conexao = conectar();
     <input type="hidden" name="id_professor" value="<?php echo $_SESSION['usuario'][1] ?>">
     Informe o nome do projeto : <input type="text" name="nome_projeto"required><br>
     <h4>Informe o Status do Projeto.</h4>
-    <input type="radio" name="situacao" value="indisponivel"required>Indisponível<br><br>
-    <input type="radio" name="situacao" value="disponivel"required>Disponivel<br><br>
+    <input type="radio" name="situacao" value="Inativo"required>Inativo<br><br>
+    <input type="radio" name="situacao" value="Ativo"required>Ativo<br><br>
         <input type="submit" value="cadastrar">
     </form>
 </body>
