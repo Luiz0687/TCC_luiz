@@ -9,7 +9,7 @@ echo '<link rel="shortcut icon" type="image/x-icon" href="../../Style/images/ico
 <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
 <link rel="canonical" href="https://codepen.io/kh3996/pen/pojXrBj">';
 // Seleciona todos os dados da tabela historia
-$sql = "SELECT pro.nome_projeto, pro.situacao, en.horario, en.data, en.id_encontro FROM projeto pro 
+$sql = "SELECT pro.nome_projeto, pro.situacao, en.CH, en.data, en.id_encontro FROM projeto pro 
 INNER JOIN encontro en 
 ON pro.id_projeto = en.fk_id_projeto
 WHERE pro.id_projeto = $id_projeto";
@@ -46,7 +46,7 @@ echo '<table border=1>
 <tr>
 
 <th>Data</th>
-<th>Horario</th>
+<th>CH</th>
 <th>situação</th>
 <th colspan=3>Ações</th>
 </tr>';
@@ -57,7 +57,7 @@ echo '<table border=1>
         echo '<tr>';    
 
         echo '<td>'.$dados['data'].'</td>';
-        echo '<td>'.$dados['horario'].'</td>';
+        echo '<td>'.$dados['CH'].'</td>';
         echo '<td>'.$dados['situacao'].'</td>';
 
 

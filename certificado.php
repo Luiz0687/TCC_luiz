@@ -3,23 +3,43 @@
  include_once("conecta.php");
  $conexao = conectar();
 
+$fk_projeto_id_professor = $_GET['fk_projeto_id_professor'];
+
+ $sql = "SELECT professor.nome, alunos.nome, projeto_professor.nome_projeto, encontro.id_encontro, frequencia.fk_usuario_id_usuario 
+ , frequencia.fk_id_encontro FROM usuario professor 
+ 
+ INNER JOIN projeto projeto_professor
+ ON projeto_professor.fk_projeto_id_professor = professor.id_usuario
+ 
+ INNER JOIN encontro encontro 
+ ON encontro.fk_id_projeto = projeto_professor.id_projeto
+ 
+ INNER JOIN frequencia frequencia
+ ON frequencia.fk_id_encontro = encontro.id_encontro
+ 
+ INNER JOIN usuario alunos 
+ ON alunos.id_usuario = frequencia.fk_usuario_id_usuario
+ 
+ WHERE professor.id_usuario = $fk_projeto_id_professor";
+
 
  /*
- SELECT a.nome, user.nome, pro.nome_projeto FROM usuario a 
+ SELECT professor.nome, alunos.nome, projeto_professor.nome_projeto, encontro.id_encontro, frequencia.fk_usuario_id_usuario 
+, frequencia.fk_id_encontro FROM usuario professor 
 
-INNER JOIN frequencia fre 
-ON fre.fk_usuario_id_usuario = a.id_usuario
+INNER JOIN projeto projeto_professor
+ON projeto_professor.fk_projeto_id_professor = professor.id_usuario
 
-INNER JOIN usuario_projeto user_pro 
-ON user_pro.fk_usuario_id_usuario = a.id_usuario
+INNER JOIN encontro encontro 
+ON encontro.fk_id_projeto = projeto_professor.id_projeto
 
-INNER JOIN projeto pro 
-ON user_pro.fk_projeto_id_projeto = pro.id_projeto
+INNER JOIN frequencia frequencia
+ON frequencia.fk_id_encontro = encontro.id_encontro
 
-INNER JOIN usuario user 
+INNER JOIN usuario alunos 
+ON alunos.id_usuario = frequencia.fk_usuario_id_usuario
 
-ON user.id_usuario = pro.fk_projeto_id_professor
-WHERE a.id_usuario = 3;
+WHERE professor.id_usuario = 2;
  */
  
 ?>
@@ -160,7 +180,7 @@ small {
         />
         <div class="cert-content">
           <h1 class="other-font">Certificado</h1>
-          <span style="font-size: 30px;">Luiz Alberto dos Santos Pacheco</span>
+          <span style="font-size: 30px;">hughujuio</span>
           <br /><br />
           <span class="other-font"
             ><i><b>participou do(a)</b></i></span

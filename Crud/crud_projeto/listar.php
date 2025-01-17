@@ -47,7 +47,7 @@ if ($quantidade_linha == 0) {
                     echo '<tr>';
                     echo '<td>' . $dados['nome_projeto'] . '</td>';
                     echo '<td>' . '<i class="material-icons left" style="color: #F20F10;">brightness_1</i>' . $dados['situacao'] . '</td>';
-                    echo '<td> <a href="../../certificado.php?id_projeto=' . $dados['id_projeto'] . '" class="waves-effect waves-light  btn-flat"><i class="material-icons left">book</i>Certificados</a></td>';
+                    echo '<td> <a href="../../Login/professor/certificadoAluno.php?fk_projeto_id_professor=' . $dados['fk_projeto_id_professor'] . '" class="waves-effect waves-light  btn-flat"><i class="material-icons left">book</i>Certificados</a></td>';
                     echo '</tr>';
                 }
             }

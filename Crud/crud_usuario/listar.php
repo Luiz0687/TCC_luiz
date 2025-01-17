@@ -1,36 +1,44 @@
 <?php
-//conectar ao banco de dados.
+// Conectar ao banco de dados
+require_once("../../notificacao/funcaoNotificacao.php");
 require_once("../../conecta.php");
 $conexao = conectar();
 
-// Seleciona todos os dados da tabela historia
-$sql = "SELECT * FROM usuario";
+// Seleciona os dados agrupando por usuário
+$sql = "SELECT 
+            usuario.id_usuario, 
+            usuario.nome AS nome_usuario, 
+            SUM(encontro.CH) AS CH
+        FROM projeto projeto
+        INNER JOIN usuario_projeto user_pro
+            ON user_pro.fk_projeto_id_projeto = projeto.id_projeto
+        INNER JOIN usuario usuario
+            ON usuario.id_usuario = user_pro.fk_usuario_id_usuario
+        INNER JOIN encontro encontro
+            ON encontro.fk_id_projeto = projeto.id_projeto
+        WHERE projeto.fk_projeto_id_professor = " . $_SESSION['usuario'][1] . "
+        GROUP BY usuario.id_usuario, usuario.nome";
 
 // Executa o Select
-$resultado = mysqli_query($conexao,$sql);
+$resultado = mysqli_query($conexao, $sql);
 
-
-//Lista os itens
+// Lista os itens
 echo '<table border=1>
 <tr>
-<th>Id Usuario</th>
-<th>nome</th>
-<th>Email</th>
-<th>tipo usuario</th>
-<th colspan=3>Opções</th>
+<th>Nome</th>
+<th>Carga Horária Total</th>
+<th>Opções</th>
 </tr>';
 
+// Exibe os dados
 while ($dados = mysqli_fetch_assoc($resultado)) {
-echo '<tr>';    
-echo '<td>'.$dados['id_usuario'].'</td>';
-echo '<td>'.$dados['nome'].'</td>';
-echo '<td>'.$dados['email'].'</td>';
-echo '<td>'.$dados['usuario_tipo'].'</td>';
-echo '<td> <a href="formedit.php?id_usuario='.$dados['id_usuario'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-echo '<td> <a href="excluir?id_usuario='.$dados['id_usuario'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
-echo '</tr>';
+    echo '<tr>';    
+    echo '<td>' . $dados['nome_usuario'] . '</td>';
+    echo '<td>' . $dados['CH'] . '</td>';
+    echo '<td><button><a href="../../certificado.php?id_usuario=' . $dados['id_usuario'] . '">Emitir Certificado</a></button></td>';
+    echo '</tr>';
 }
 
-echo '</table>'."<br>";
+echo '</table>' . "<br>";
 echo '<button><a href="../../Crud/crud_encontro/listar.php">Voltar</a></button>';
 ?>

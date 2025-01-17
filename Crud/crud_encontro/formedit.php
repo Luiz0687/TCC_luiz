@@ -42,7 +42,7 @@ $dados = mysqli_fetch_assoc($resultado);
     edite a data
     <input type="date" name="data" value="<?php echo $dados['data'];?>"><br><br>
     Edite o horario
-    <input type="time" name="horario" value="<?php echo $dados['horario'];?>"><br><br>
+    <input type="int" name="CH" value="<?php echo $dados['CH'];?>"><br><br>
 
     <input type="submit" value="Editar"/><br>
 
