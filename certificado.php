@@ -1,4 +1,28 @@
+<?php
+ include_once("notificacao/funcaoNotificacao.php");
+ include_once("conecta.php");
+ $conexao = conectar();
 
+
+ /*
+ SELECT a.nome, user.nome, pro.nome_projeto FROM usuario a 
+
+INNER JOIN frequencia fre 
+ON fre.fk_usuario_id_usuario = a.id_usuario
+
+INNER JOIN usuario_projeto user_pro 
+ON user_pro.fk_usuario_id_usuario = a.id_usuario
+
+INNER JOIN projeto pro 
+ON user_pro.fk_projeto_id_projeto = pro.id_projeto
+
+INNER JOIN usuario user 
+
+ON user.id_usuario = pro.fk_projeto_id_professor
+WHERE a.id_usuario = 3;
+ */
+ 
+?>
 <!DOCTYPE html>
 <html lang='pt-BR' class=''>
 
@@ -6,7 +30,9 @@
 
   <meta charset='UTF-8'>
   <title>Certificado</title>
-
+  <link rel="shortcut icon" type="image/x-icon" href="Style/images/icone.jpg">
+    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+    <link rel="canonical" href="https://codepen.io/kh3996/pen/pojXrBj">
   
 
   <style id="INLINE_PEN_STYLESHEET_ID">
@@ -128,7 +154,7 @@ small {
     <div class="cert-container print-m-0">
       <div id="content2" class="cert">
         <img
-          src="./Style/images/fundocertificado.png"
+          src="Style/images/fundocertificado.png"
           class="cert-bg"
           alt=""
         />

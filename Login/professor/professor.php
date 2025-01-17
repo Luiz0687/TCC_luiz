@@ -12,6 +12,11 @@ require_once "../../notificacao/funcaoNotificacao.php";
     <title>Projeto</title>
 
     <!-- CSS  -->
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../Style/images/icone.jpg">
+    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+    <link rel="canonical" href="https://codepen.io/kh3996/pen/pojXrBj">
+    
     <link href="../../Style/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../../Style/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
