@@ -1,17 +1,19 @@
-<?php
 
-// Conectar ao BD
+<?php
 require_once("../../conecta.php");
 $conexao = conectar();
 
-// receber os dados do formulário
 $id_projeto = $_GET['id_projeto'];
 
-$sql = "DELETE FROM projeto WHERE id_projeto = $id_projeto";
+// Primeiro, excluir as associações na tabela usuario_projeto
+$sql_usuario_projeto = "DELETE FROM usuario_projeto WHERE fk_projeto_id_projeto = $id_projeto";
+mysqli_query($conexao, $sql_usuario_projeto);
 
-// executa o comando no BD
-mysqli_query($conexao,$sql);
+// Agora, excluir o projeto da tabela projeto
+$sql_projeto = "DELETE FROM projeto WHERE id_projeto = $id_projeto";
+mysqli_query($conexao, $sql_projeto);
 
-header("location:../../Login/professor/professor.php");
-
+// Redirecionar de volta para a página de lista de projetos
+header("Location: ../../Login/professor/professor.php");
+exit();
 ?>

@@ -37,8 +37,9 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<td>' . $dados['CH'] . '</td>';
     echo '<td><button><a href="../../certificado.php?id_usuario=' . $dados['id_usuario'] . '">Emitir Certificado</a></button></td>';
     echo '</tr>';
+  
 }
-
+echo'<hr>';
 echo '</table>' . "<br>";
 echo '<button><a href="../../Crud/crud_encontro/listar.php">Voltar</a></button>';
 ?>
