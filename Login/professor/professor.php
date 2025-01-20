@@ -1,5 +1,4 @@
 <?php
-
 require_once "../../notificacao/funcaoNotificacao.php";
 ?>
 
@@ -70,7 +69,6 @@ require_once "../../notificacao/funcaoNotificacao.php";
             <div class="row">
 
              <?php
-
              require_once "../../Crud/crud_projeto/listar.php";
              ?>
 
@@ -80,13 +78,13 @@ require_once "../../notificacao/funcaoNotificacao.php";
 
 
     <footer class="page-footer black lighten-1">
+        <div class="container">
 
         <div class="footer-copyright">
-            <div class="container">
                 <p>Copyright ©2025 Luiz</p>
             </div>
         </div>
-    </footer>
+    </footer>   
 
 
     <!--  Scripts-->

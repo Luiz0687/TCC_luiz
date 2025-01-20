@@ -65,7 +65,7 @@ $conexao = conectar();
 
                   
                   
-                    <li><a href="../../Login/professor/professor.php"  >Voltar</a></li>
+                    <li><a href="../../Login/professor/professor.php">Voltar</a></li>
                     </ul>
             </div>
         </nav>
