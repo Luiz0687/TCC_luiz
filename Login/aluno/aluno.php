@@ -1,21 +1,15 @@
 <?php
-if(!isset($_SESSION)){
-    session_start();
-}
-if(!isset($_SESSION)){
-    echo " <script>alert('Você não está logado no sistema!');
-    window.location.href=window.location.origin +'/tcc_luiz/index.php';
-    </script>";
-      die;
- }
-?>
+include_once "../../notificacao/funcaoNotificacao.php";
+include_once "../../conecta.php";
+$conexao = conectar();
 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aluno</title>
 </head>
 <body>
     <h1>Página do aluno</h1>

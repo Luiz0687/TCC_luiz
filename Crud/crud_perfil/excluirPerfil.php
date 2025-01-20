@@ -1,36 +1,19 @@
 <?php
+// Iniciar a sessão
+require_once "../../notificacao/funcaoNotificacao.php"; // Notificações
+require_once "../../conecta.php"; // Conectar ao banco
 
-//iniciar a sesssion.
-session_start();
-
-//conectar com bd.
-require_once "../conecta.php";
-
-//variavel de conexão.
+// Conectar ao banco de dados
 $mysql = conectar();
 
-$pasta = "../foto/";
-
-$sql = "SELECT u.foto_perfil FROM usuario u WHERE id_usuario = " . $_SESSION['usuario'][1];
-
-$query = executarSQL($mysql, $sql);
-
-$foto = mysqli_fetch_assoc($query);
-
-if ($foto['foto_perfil'] == "user.png") {
-
-    $sql2 = "DELETE FROM usuario WHERE id_usuario = " . $_SESSION['usuario'][1];
-
-    executarSQL($mysql, $sql2);
-
-    header("location: ../logout.php");
+// Deletar o usuário do banco de dados
+$sql = "DELETE FROM usuario WHERE id_usuario = " . $_SESSION['usuario'][1];
+if (executarSQL($mysql, $sql)) {
+    // Destruir a sessão e redirecionar para a página de logout
+    session_destroy();
+    header("Location: ../../index.php");
+    exit;
 } else {
-
-    $sql3 = "DELETE FROM usuario WHERE id_usuario = " . $_SESSION['usuario'][1];
-
-    executarSQL($mysql, $sql3);
-
-    unlink($pasta . $foto['foto_perfil']);
-
-    header("location: ../logout.php");
+    echo "Erro ao excluir o perfil. Tente novamente.";
 }
+?>

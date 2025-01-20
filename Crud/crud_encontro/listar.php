@@ -142,7 +142,7 @@ echo '<link rel="shortcut icon" type="image/x-icon" href="../../Style/images/ico
              }
              
              if (count($lstDados) == 0) {
-                 echo '<h2>Este projeto não possui encontros.</h2>';
+                 echo '<h5>Este projeto não possui encontros.</h5>';
              } else {
                  echo '<h4>' . $lstDados[0]['nome_projeto'] . '</h4>';
              }

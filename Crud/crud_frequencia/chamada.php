@@ -52,7 +52,6 @@ $sqlAlunos = "SELECT usuario.id_usuario, usuario.nome
               )";
 
 $resultadoAlunos = mysqli_query($conexao, $sqlAlunos);
-
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +86,7 @@ $resultadoAlunos = mysqli_query($conexao, $sqlAlunos);
             border: 1px solid black;
             border-radius: 5px;
             background-color: #f9f9f9;
+            clear: both;  /* Garante que cada item fique em uma linha separada */
         }
 
         .frequencia-item button {
@@ -101,7 +101,12 @@ $resultadoAlunos = mysqli_query($conexao, $sqlAlunos);
 
         .frequencia-item button:hover {
             background-color: gainsboro;
-        color:black;
+            color: black;
+        }
+
+        .frequencia-excluir button:hover {
+            background-color: brown;
+            color: white;
         }
 
         .frequencia-title {
@@ -164,7 +169,7 @@ $resultadoAlunos = mysqli_query($conexao, $sqlAlunos);
                 }
                 ?>
 
-                <h3 class="frequencia-title">Alunos com presença registrada:</h3>
+                <h3 class="frequencia-title">Alunos com presença:</h3>
                 <?php
                 // Listar alunos com presença registrada
                 $sql = "SELECT usuario.id_usuario, usuario.nome 
@@ -175,17 +180,21 @@ $resultadoAlunos = mysqli_query($conexao, $sqlAlunos);
 
                 $resultado = mysqli_query($conexao, $sql);
 
-                while ($dados = mysqli_fetch_assoc($resultado)) {
-                    echo '<div class="frequencia-item">';
-                    echo '<span>' . htmlspecialchars($dados['nome']) . '</span>';
-                    echo '<a href="./chamada?id_usuario=' . $dados['id_usuario'] . '&excluir=1&id_encontro=' . $id_encontro . '">';
-                    echo '<button type="button">Remover</button>';
-                    echo '</a>';
-                    echo '</div>';
+                if (mysqli_num_rows($resultado) > 0) {
+                    while ($dados = mysqli_fetch_assoc($resultado)) {
+                        echo '<div class="frequencia-item">';
+                        echo '<span>' . htmlspecialchars($dados['nome']) . '</span>';
+                        echo '<div class="frequencia-excluir">';
+                        echo '<a href="./chamada?id_usuario=' . $dados['id_usuario'] . '&excluir=1&id_encontro=' . $id_encontro . '">';
+                        echo '<button type="button">Remover</button>';
+                        echo '</a>';
+                        echo '</div>';
+                        echo '</div>'; // Fechar o item de presença
+                    }
+                } else {
+                    echo '<p>Não há alunos com presença registrada.</p>';
                 }
                 ?>
-
-
 
             </div>
 
@@ -202,5 +211,3 @@ $resultadoAlunos = mysqli_query($conexao, $sqlAlunos);
 </body>
 
 </html>
-</div>
-</div>
