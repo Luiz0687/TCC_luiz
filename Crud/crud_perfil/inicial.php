@@ -59,8 +59,8 @@ $usuario = mysqli_fetch_assoc($query);
         /* Botão de excluir */
         .delete-btn {
             position: fixed;
-            bottom: 140px;
-            right: 1015px;
+            bottom: 430px;
+            right: 1450px;
             padding: 12px 20px;
             background-color: black;
             color: white;
