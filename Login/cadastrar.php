@@ -2,8 +2,9 @@
 require_once "../notificacao/funcaoNotificacao.php";
 require_once "../conecta.php";
 $conexao = conectar();
-if ($_POST) {
+$mensagem = '';
 
+if ($_POST) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -19,25 +20,33 @@ if ($_POST) {
         if ($quantidadeEmail == 0) {
             $sql = "INSERT INTO usuario (senha, email, nome, usuario_tipo) VALUES('$novaSenha', '$email', '$nome', $usuario_tipo)";
             mysqli_query($conexao, $sql);
-            header("location:../index.php");
+            $mensagem = 'Usuário cadastrado com sucesso!';
+            // Não redirecionar imediatamente, exibir a mensagem primeiro
         } else {
-            echo "Esse Email já existe!";
+            $mensagem = 'Esse email já existe!';
         }
     } else {
-        echo "As senhas não correspondem!";
+        $mensagem = 'As senhas não correspondem!';
     }
 }
 ?>
 
-
-		
-	
-
-
-
-
-
-<!----<h1>Cadastre-se</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <script>
+        function mostrarMensagem(mensagem) {
+            if (mensagem) {
+                alert(mensagem);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Cadastre-se</h1>
     <form action="" method="post">
         <input type="hidden" name="usuario_tipo" value="3">
         Nome do usuário: <input type="text" name="nome" id="nome" required> <br><br>
@@ -47,5 +56,17 @@ if ($_POST) {
         <input type="submit" value="Cadastre-se"><br><br>
         <a href="../index.php">Voltar</a>
     </form><br>
+
+    <script>
+        // Passa a mensagem do PHP para o JavaScript
+        mostrarMensagem("<?php echo $mensagem; ?>");
+    </script>
+
+    <?php
+    // Redireciona após exibir a mensagem
+    if ($mensagem === 'Usuário cadastrado com sucesso!') {
+        echo "<script>window.location.href = '../index.php';</script>";
+    }
+    ?>
 </body>
 </html>
