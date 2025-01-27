@@ -53,9 +53,10 @@ require_once "../../notificacao/funcaoNotificacao.php";
 
           
 
-                <div class="col s9">
-                    <h4>Designar Monitor.</h4>
-                </div>
+        <div class="col s9">
+    <h4> Selecione o Projeto.</h4>
+</div>
+
                 <div class="col s3">
                    
                 </div>
@@ -64,7 +65,7 @@ require_once "../../notificacao/funcaoNotificacao.php";
             <div class="row">
 
              <?php
-             require_once "../../Crud/crud_usuario/designar.php";
+             require_once "../../Crud/crud_projeto/listarProjeto.php";
              ?>
 
             </div>
