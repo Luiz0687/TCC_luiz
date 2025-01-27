@@ -56,10 +56,11 @@ $conexao = conectar();
 
             <div class="options-container">
     <?php  
-    echo "<h5>Olá, " . $_SESSION['usuario'][0] . "</h5>";
+    echo "<h5>Olá, " . $_SESSION['usuario'][0] . "</h5><br><br>";
     ?>
    
-    <a href="frequencia.php" class="btn-option">Frequências</a><br>
+    <a href="frequencia.php" class="btn-option">Frequências</a><br><br>
+    <a href="cadastro.php" class="btn-option">Inserir encontro</a><br>
 </div>
 
 <style>

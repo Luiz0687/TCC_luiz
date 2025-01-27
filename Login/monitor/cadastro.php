@@ -37,15 +37,11 @@ require_once "../../notificacao/funcaoNotificacao.php";
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
 
-                    <li><a href=""  > Projetos</a></li>
-                    <li><a href="../../Crud/crud_perfil/inicial.php"  >Meu Perfil</a></li>
-                    <li><a href="../../index.php"  >Sair</a></li>
+                    <li><a href="monitor.php"  >Sair</a></li>
 
                 </ul>
                 <ul class="right side-nav" id="mobile-demo">
-                    <li><a class="head-link" href="">Meus Projetos</a></li>
-                    <li><a class="head-link" href="../../Crud/crud_perfil/inicial.php">Meu Perfil</a></li>
-                    <li><a class="head-link" href="../../index.php">Sair</a></li>
+                    <li><a class="head-link" href="monitor.php">Sair</a></li>
                 </ul>
             </div>
         </nav>
@@ -57,15 +53,9 @@ require_once "../../notificacao/funcaoNotificacao.php";
             <div class="row">
 
                 <div class="col s9">
-                    <h4>Meus Projetos</h4>
+                    <h4>Projetos Disponíveis</h4>
                 </div>
                 <div class="col s3">
-                    <div>
-                        <a href="designar.php" class="waves-effect waves-light black btn-large"><i class="material-icons left"></i>Designar Monitor</a>
-
-                       
-                        <a href="../../Crud/crud_projeto/formcad.php" class="waves-effect waves-light black btn-large"><i class="material-icons left">add_box</i>criar novo projeto</a>
-                    </div>
                 </div>
             </div>
 
@@ -78,6 +68,10 @@ require_once "../../notificacao/funcaoNotificacao.php";
             </div>
         </div>
     </div>
+
+
+    
+
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
