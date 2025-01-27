@@ -3,46 +3,44 @@
  include_once("conecta.php");
  $conexao = conectar();
 
-  $fk_projeto_id_professor = $_GET['fk_projeto_id_professor'];
-
- $sql = "SELECT professor.nome, alunos.nome, projeto_professor.nome_projeto, encontro.id_encontro, frequencia.fk_usuario_id_usuario 
- , frequencia.fk_id_encontro FROM usuario professor 
+ $id_inscricao = $_GET['verificacao'];
  
- INNER JOIN projeto projeto_professor
- ON projeto_professor.fk_projeto_id_professor = professor.id_usuario
- 
- INNER JOIN encontro encontro 
- ON encontro.fk_id_projeto = projeto_professor.id_projeto
- 
- INNER JOIN frequencia frequencia
- ON frequencia.fk_id_encontro = encontro.id_encontro
- 
- INNER JOIN usuario alunos 
- ON alunos.id_usuario = frequencia.fk_usuario_id_usuario
- 
- WHERE professor.id_usuario = $fk_projeto_id_professor";
+  
+$sql = "SELECT 
+    user_pro.id_inscricao, 
+    aluno.nome AS nome_aluno, 
+    professor.nome AS nome_professor, 
+    pro.nome_projeto, 
+    pro.data_finalizacao, 
+    pro.id_projeto,
+    SUM(CASE WHEN freq.id_frequencia IS NOT NULL THEN en.CH ELSE 0 END) AS total_CH
+FROM 
+    usuario_projeto user_pro 
+INNER JOIN 
+    usuario aluno ON aluno.id_usuario = user_pro.fk_usuario_id_usuario 
+INNER JOIN 
+    projeto pro ON pro.id_projeto = user_pro.fk_projeto_id_projeto 
+INNER JOIN 
+    usuario professor ON professor.id_usuario = pro.fk_projeto_id_professor 
+INNER JOIN 
+    encontro en ON en.fk_id_projeto = pro.id_projeto 
+LEFT JOIN 
+    frequencia freq ON freq.fk_id_encontro = en.id_encontro AND freq.fk_usuario_id_usuario = aluno.id_usuario
+WHERE 
+    user_pro.id_inscricao = $id_inscricao
+GROUP BY 
+    user_pro.id_inscricao, 
+    aluno.nome, 
+    professor.nome, 
+    pro.nome_projeto, 
+    pro.data_finalizacao, 
+    pro.id_projeto";
 
-echo $sql;
-exit;
- /*
- SELECT professor.nome, alunos.nome, projeto_professor.nome_projeto, encontro.id_encontro, frequencia.fk_usuario_id_usuario 
-, frequencia.fk_id_encontro FROM usuario professor 
+$resultado = executarSQL($conexao, $sql);
 
-INNER JOIN projeto projeto_professor
-ON projeto_professor.fk_projeto_id_professor = professor.id_usuario
+$linhas = mysqli_fetch_assoc($resultado);
+$total_CH = $linhas['total_CH'];
 
-INNER JOIN encontro encontro 
-ON encontro.fk_id_projeto = projeto_professor.id_projeto
-
-INNER JOIN frequencia frequencia
-ON frequencia.fk_id_encontro = encontro.id_encontro
-
-INNER JOIN usuario alunos 
-ON alunos.id_usuario = frequencia.fk_usuario_id_usuario
-
-WHERE professor.id_usuario = 2;
- */
- 
 ?>
 <!DOCTYPE html>
 <html lang='pt-BR' class=''>
@@ -69,7 +67,10 @@ WHERE professor.id_usuario = 2;
     margin: 0 !important;
   }
 } 
-
+a{
+  text-decoration: none;
+  color: #333;
+}
 .btn{
   padding: 10px 17px; 
   border-radius: 3px; 
@@ -167,31 +168,42 @@ small {
   
 
    
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Imprimir Certificado
+      </button>
+      
+   
+
+
+
+      <button class="btn btn-info" id="downloadPDF">Baixar em PDF</button>
+      <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
     </div>
     <div class="cert-container print-m-0">
       <div id="content2" class="cert">
         <img
-          src="Style/images/fundocertificado.png"
+          src="./Style/images/fundocertificado.png"
           class="cert-bg"
           alt=""
         />
         <div class="cert-content">
           <h1 class="other-font">Certificado</h1>
-          <span style="font-size: 30px;">hughujuio</span>
+          <span style="font-size: 30px;"><?php echo $linhas['nome_aluno'] ?></span>
           <br /><br />
           <span class="other-font"
             ><i><b>participou do(a)</b></i></span
           >
           <br />
-          <span style="font-size: 30px;"><b>Projeto matBásica - Oficinas de Matemática Básica</b></span>
+          <span style="font-size: 30px;"><b><?php echo $linhas['nome_projeto'] ?></b></span>
           <br /><br>
     
           <small
-            >sob orientação do servidor <b>Favildo da Silva Sauro</b>, completando <b>700h</b> de participação efetiva.</small
+            >sob orientação do servidor <b><?php echo $linhas['nome_professor'] ?></b>, completando <b><?php echo $total_CH ?></b> horas de participação efetiva.</small
           ><br /><br />
           <div class="bottom-txt">
-            <span>ID de Verificação: 12</span>
-            <span>Emitido em: 20/12/2024</span>
+            <span>ID de Verificação: <?php echo $linhas['id_inscricao'] ?></span>
+            <span>Emitido em: <?php echo $linhas['data_finalizacao'] ?></span>
           </div>
         </div>
       </div>

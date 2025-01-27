@@ -28,18 +28,27 @@ require_once "../../notificacao/funcaoNotificacao.php";
 </head>
 
 <body>
-    <div id="navbar" class="navbar-fixed scrollspy">
+<div id="navbar" class="navbar-fixed scrollspy">
         <nav class="white">
             <div class="nav-wrapper container">
                 <div class="container">
                     <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
                 </div>
 
-    
+                <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul class="right hide-on-med-and-down">
+
+               
+                    <li><a href="professor.php"  >Sair</a></li>
+
+                </ul>
+                <ul class="right side-nav" id="mobile-demo">
+                    
+                    <li><a class="head-link" href="professor.php">Sair</a></li>
+                </ul>
             </div>
         </nav>
     </div>
-
     <div class="container section scrollspy">
         <div class="section">
 

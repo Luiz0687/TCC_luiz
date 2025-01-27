@@ -56,14 +56,16 @@ require_once "../../notificacao/funcaoNotificacao.php";
 
             <div class="row">
 
-                <div class="col s9">
+                <div class="col s12 m4 l6">
                     <h4>Meus Projetos</h4>
                 </div>
-                <div class="col s3">
+                <div class="col s12 m4 l3">
                     <div>
                         <a href="designar.php" class="waves-effect waves-light black btn-large"><i class="material-icons left"></i>Designar Monitor</a>
-
-                       
+                        </div>
+                </div>
+                <div class="col s12 m4 l3">
+                            <div>
                         <a href="../../Crud/crud_projeto/formcad.php" class="waves-effect waves-light black btn-large"><i class="material-icons left">add_box</i>criar novo projeto</a>
                     </div>
                 </div>

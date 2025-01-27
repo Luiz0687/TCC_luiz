@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 27-Jan-2025 às 16:37
+-- Tempo de geração: 27-Jan-2025 às 22:12
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `encontro` (
   `fk_id_projeto` int DEFAULT NULL,
   PRIMARY KEY (`id_encontro`),
   KEY `fk_encontro_projeto_id_projeto` (`fk_id_projeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `encontro`
@@ -47,7 +47,9 @@ INSERT INTO `encontro` (`id_encontro`, `CH`, `data`, `fk_id_projeto`) VALUES
 (24, 3, '2025-01-23', 24),
 (25, 6, '2025-01-28', 24),
 (26, 2, '2025-01-14', 24),
-(27, 2, '2025-01-23', 24);
+(27, 2, '2025-01-23', 24),
+(29, 3, '2025-01-28', 25),
+(30, 4444, '2025-01-08', 25);
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `frequencia` (
   PRIMARY KEY (`id_frequencia`),
   KEY `fk_frequencia_id_encontro` (`fk_id_encontro`),
   KEY `fk_frequencia_usuario_id_usuario` (`fk_usuario_id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `frequencia`
@@ -72,7 +74,9 @@ CREATE TABLE IF NOT EXISTS `frequencia` (
 INSERT INTO `frequencia` (`id_frequencia`, `fk_id_encontro`, `fk_usuario_id_usuario`) VALUES
 (69, 19, 3),
 (70, 23, 3),
-(81, 24, 17);
+(81, 24, 17),
+(82, 29, 4),
+(83, 30, 4);
 
 -- --------------------------------------------------------
 
@@ -103,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `situacao` varchar(255) DEFAULT NULL,
   `fk_projeto_id_professor` int DEFAULT NULL,
   `data_finalizacao` date NOT NULL,
+  `id_monitor` int NOT NULL,
   PRIMARY KEY (`id_projeto`),
   KEY `fk_projeto_id_professor` (`fk_projeto_id_professor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -111,11 +116,11 @@ CREATE TABLE IF NOT EXISTS `projeto` (
 -- Extraindo dados da tabela `projeto`
 --
 
-INSERT INTO `projeto` (`id_projeto`, `nome_projeto`, `situacao`, `fk_projeto_id_professor`, `data_finalizacao`) VALUES
-(16, 'Projeto de linguagem', 'Inativo', 9, '0000-00-00'),
-(22, 'Projeto de Ingles', 'Ativo', 9, '0000-00-00'),
-(24, 'projeto de poker', 'Inativo', 9, '0000-00-00'),
-(25, 'Projeto de Xadrez', 'Ativo', 9, '0000-00-00');
+INSERT INTO `projeto` (`id_projeto`, `nome_projeto`, `situacao`, `fk_projeto_id_professor`, `data_finalizacao`, `id_monitor`) VALUES
+(16, 'Projeto de linguagem', 'Inativo', 9, '0000-00-00', 0),
+(22, 'Projeto de Ingles', 'Ativo', 9, '0000-00-00', 0),
+(24, 'projeto de poker', 'Inativo', 9, '2025-01-27', 0),
+(25, 'Projeto de Xadrez', 'Ativo', 9, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -184,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
   PRIMARY KEY (`id_inscricao`),
   KEY `fk_usuario_id_usuario` (`fk_usuario_id_usuario`),
   KEY `fk_projeto_id_projeto` (`fk_projeto_id_projeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `usuario_projeto`
@@ -192,11 +197,11 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
 
 INSERT INTO `usuario_projeto` (`fk_usuario_id_usuario`, `fk_projeto_id_projeto`, `id_inscricao`) VALUES
 (3, 16, 27),
-(4, 24, 29),
 (17, 24, 30),
 (18, 24, 31),
 (19, 24, 33),
-(19, 22, 34);
+(19, 22, 34),
+(4, 25, 35);
 
 --
 -- Restrições para despejos de tabelas

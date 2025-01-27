@@ -52,7 +52,7 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<tr>';    
     echo '<td>' . ($dados['nome']) . '</td>';
     echo '<td>' . ($dados['total_CH']) . '</td>';
-    echo '<td><button><a href="../../certificado.php?id_inscricao=' . ($dados['id_inscricao']) .  '&total_CH='.$dados['total_CH'].'">Emitir Certificado</a></button></td>';
+    echo '<td><button><a href="../../certificado.php?verificacao=' . ($dados['id_inscricao']) .'">Emitir Certificado</a></button></td>';
     echo '</tr>';
 }
 
