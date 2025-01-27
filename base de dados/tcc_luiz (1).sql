@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 21-Jan-2025 às 02:48
--- Versão do servidor: 8.3.0
--- versão do PHP: 8.2.18
+-- Tempo de geração: 27-Jan-2025 às 16:37
+-- Versão do servidor: 8.0.31
+-- versão do PHP: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `encontro` (
   `fk_id_projeto` int DEFAULT NULL,
   PRIMARY KEY (`id_encontro`),
   KEY `fk_encontro_projeto_id_projeto` (`fk_id_projeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `encontro`
@@ -43,7 +43,11 @@ CREATE TABLE IF NOT EXISTS `encontro` (
 
 INSERT INTO `encontro` (`id_encontro`, `CH`, `data`, `fk_id_projeto`) VALUES
 (19, 2, '2025-01-15', 16),
-(23, 3, '2025-01-12', 16);
+(23, 3, '2025-01-12', 16),
+(24, 3, '2025-01-23', 24),
+(25, 6, '2025-01-28', 24),
+(26, 2, '2025-01-14', 24),
+(27, 2, '2025-01-23', 24);
 
 -- --------------------------------------------------------
 
@@ -59,15 +63,32 @@ CREATE TABLE IF NOT EXISTS `frequencia` (
   PRIMARY KEY (`id_frequencia`),
   KEY `fk_frequencia_id_encontro` (`fk_id_encontro`),
   KEY `fk_frequencia_usuario_id_usuario` (`fk_usuario_id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `frequencia`
 --
 
 INSERT INTO `frequencia` (`id_frequencia`, `fk_id_encontro`, `fk_usuario_id_usuario`) VALUES
-(50, 19, 3),
-(53, 23, 3);
+(69, 19, 3),
+(70, 23, 3),
+(81, 24, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `monitor_projeto`
+--
+
+DROP TABLE IF EXISTS `monitor_projeto`;
+CREATE TABLE IF NOT EXISTS `monitor_projeto` (
+  `id_usuario_projeto` int NOT NULL AUTO_INCREMENT,
+  `fk_id_usuario` int NOT NULL,
+  `fk_id_projeto` int NOT NULL,
+  PRIMARY KEY (`id_usuario_projeto`),
+  KEY `fk_id_usuario_monitor` (`fk_id_usuario`),
+  KEY `fk_id_projeto_monitor` (`fk_id_projeto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -84,17 +105,17 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `data_finalizacao` date NOT NULL,
   PRIMARY KEY (`id_projeto`),
   KEY `fk_projeto_id_professor` (`fk_projeto_id_professor`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `projeto`
 --
 
 INSERT INTO `projeto` (`id_projeto`, `nome_projeto`, `situacao`, `fk_projeto_id_professor`, `data_finalizacao`) VALUES
-(16, 'Projeto de linguagem', 'Ativo', 9, '0000-00-00'),
-(22, 'Projeto de Ingles', 'Inativo', 9, '0000-00-00'),
-(24, 'projeto de poker', 'Ativo', 9, '0000-00-00'),
-(25, 'Projeto de Xadrez', 'Inativo', 9, '0000-00-00');
+(16, 'Projeto de linguagem', 'Inativo', 9, '0000-00-00'),
+(22, 'Projeto de Ingles', 'Ativo', 9, '0000-00-00'),
+(24, 'projeto de poker', 'Inativo', 9, '0000-00-00'),
+(25, 'Projeto de Xadrez', 'Ativo', 9, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -135,16 +156,19 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(255) DEFAULT NULL,
   `usuario_tipo` int NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`, `usuario_tipo`) VALUES
-(3, 'Jeverson', 'jeverson.2022311922@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$cTRKalhLNURrWHB0LlJJeg$NV5R+vwpSsZsamyex6WertFw2IsHrrplu5PaHxg+ACc', 3),
-(4, 'Roberto Graziadei', 'roberto.2022315930@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Z1k5aXEzZXlEYlRaQ29oYw$NA7P8SlNwOdGxIGfqeTL/aiUm0zovcmtHJ8civQDJdw', 2),
-(9, 'Luiz Guilherme', 'luiz.2022310970@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Q3ZNM0JDOW5jaVZJYzB2Yw$PijhV7DLf8QjGZyW6LciwX5Ac36hOZH/2ZSQhgzTEpc', 1);
+(3, 'Jeverson', 'jeverson.2022311922@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$cTRKalhLNURrWHB0LlJJeg$NV5R+vwpSsZsamyex6WertFw2IsHrrplu5PaHxg+ACc', 2),
+(4, 'Roberto Graziadei', 'roberto.2022315930@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Z1k5aXEzZXlEYlRaQ29oYw$NA7P8SlNwOdGxIGfqeTL/aiUm0zovcmtHJ8civQDJdw', 3),
+(9, 'Luiz Guilherme', 'luiz.2022310970@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Q3ZNM0JDOW5jaVZJYzB2Yw$PijhV7DLf8QjGZyW6LciwX5Ac36hOZH/2ZSQhgzTEpc', 1),
+(17, 'feijao', 'luiz@luiz', '$argon2i$v=19$m=65536,t=4,p=1$d1lmNkJJNlRweXFDWFJZcg$rbssj12HTisyVUOYfmeZe4derQjK9BxeXxrQpfrGY8U', 3),
+(18, 'Luiz Guilherme', '123@123', '$argon2i$v=19$m=65536,t=4,p=1$d3loM3FqOWxyVGxuOXhQZw$73MAKWUqB6XecO7btyoinCCx+xAmHNpbrIdP+7cwuew', 3),
+(19, 'fabricio', 'fabricio@fabricio', '$argon2i$v=19$m=65536,t=4,p=1$RGQwREJ2UkYyMElhV3phZg$IgNr+KOSpulQndwdXeF7+gzRAGH5sJAp64Z081UBflw', 3);
 
 -- --------------------------------------------------------
 
@@ -160,14 +184,19 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
   PRIMARY KEY (`id_inscricao`),
   KEY `fk_usuario_id_usuario` (`fk_usuario_id_usuario`),
   KEY `fk_projeto_id_projeto` (`fk_projeto_id_projeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `usuario_projeto`
 --
 
 INSERT INTO `usuario_projeto` (`fk_usuario_id_usuario`, `fk_projeto_id_projeto`, `id_inscricao`) VALUES
-(3, 16, 27);
+(3, 16, 27),
+(4, 24, 29),
+(17, 24, 30),
+(18, 24, 31),
+(19, 24, 33),
+(19, 22, 34);
 
 --
 -- Restrições para despejos de tabelas
@@ -185,6 +214,13 @@ ALTER TABLE `encontro`
 ALTER TABLE `frequencia`
   ADD CONSTRAINT `fk_frequencia_id_encontro` FOREIGN KEY (`fk_id_encontro`) REFERENCES `encontro` (`id_encontro`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_frequencia_usuario_id_usuario` FOREIGN KEY (`fk_usuario_id_usuario`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Limitadores para a tabela `monitor_projeto`
+--
+ALTER TABLE `monitor_projeto`
+  ADD CONSTRAINT `fk_id_projeto_monitor` FOREIGN KEY (`fk_id_projeto`) REFERENCES `projeto` (`id_projeto`),
+  ADD CONSTRAINT `fk_id_usuario_monitor` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Limitadores para a tabela `projeto`

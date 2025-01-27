@@ -64,15 +64,7 @@ require_once "../../notificacao/funcaoNotificacao.php";
         </div>
     </div>
 
-
-    <footer class="page-footer black lighten-1">
-
-        <div class="footer-copyright">
-            <div class="container">
-                <p>Copyright ©2025 Luiz</p>
-            </div>
-        </div>
-    </footer>
+        
 
 
     <!--  Scripts-->

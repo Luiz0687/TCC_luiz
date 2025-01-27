@@ -3,7 +3,7 @@
  include_once("conecta.php");
  $conexao = conectar();
 
-$fk_projeto_id_professor = $_GET['fk_projeto_id_professor'];
+  $fk_projeto_id_professor = $_GET['fk_projeto_id_professor'];
 
  $sql = "SELECT professor.nome, alunos.nome, projeto_professor.nome_projeto, encontro.id_encontro, frequencia.fk_usuario_id_usuario 
  , frequencia.fk_id_encontro FROM usuario professor 
@@ -22,7 +22,8 @@ $fk_projeto_id_professor = $_GET['fk_projeto_id_professor'];
  
  WHERE professor.id_usuario = $fk_projeto_id_professor";
 
-
+echo $sql;
+exit;
  /*
  SELECT professor.nome, alunos.nome, projeto_professor.nome_projeto, encontro.id_encontro, frequencia.fk_usuario_id_usuario 
 , frequencia.fk_id_encontro FROM usuario professor 
@@ -165,11 +166,7 @@ small {
     
   
 
-    <div class="toolbar no-print">
-      <button class="btn btn-info" onclick="window.print()">
-        Imprimir Certificado
-      </button>
-      <button class="btn btn-info" id="downloadPDF">Baixar em PDF</button>
+   
     </div>
     <div class="cert-container print-m-0">
       <div id="content2" class="cert">
