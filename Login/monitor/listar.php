@@ -1,7 +1,6 @@
 <?php
 require_once("../../notificacao/funcaoNotificacao.php");
 require_once("../../conecta.php");
-
 $conexao = conectar();
 
 // Verificar se a variável 'usuario' está definida
@@ -59,18 +58,17 @@ if ($quantidade_linha == 0) {
             while ($dados = mysqli_fetch_assoc($resultado)) {
                 if ($dados['situacao'] == "Ativo") {
                     echo '<tr>';
-                    echo '<td>' . htmlspecialchars($dados['nome_projeto']) . '</td>';
-                    echo '<td><i class="material-icons left" style="color: #05CA5D;">brightness_1</i>' . htmlspecialchars($dados['situacao']) . '</td>';
-                    echo '<td><a href="../../Crud/crud_encontro/listar.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">people</i>Encontros</a></td>';
-                    echo '<td><a href="../../Crud/crud_projeto/finalizar.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">flag</i>Finalizar</a></td>';
-                    echo '<td><a href="../../Crud/crud_usuario/designar.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">person</i>Monitor</a></td>';
-                    echo '<td><a href="#" data-href="../../Crud/crud_projeto/excluir.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="btn-delete waves-effect waves-light btn-flat"><i class="material-icons">delete</i></a></td>';
+                    echo '<td>' . ($dados['nome_projeto']) . '</td>';
+                    echo '<td><i class="material-icons left" style="color: #05CA5D;">brightness_1</i>' . ($dados['situacao']) . '</td>';
+                    echo '<td><a href="../../Crud/crud_encontro/listar.php?id_projeto=' . ($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">people</i>Encontros</a></td>';
+                  
+
                     echo '</tr>';
                 } else {
                     echo '<tr>';
-                    echo '<td>' . htmlspecialchars($dados['nome_projeto']) . '</td>';
-                    echo '<td><i class="material-icons left" style="color: #F20F10;">brightness_1</i>' . htmlspecialchars($dados['situacao']) . '</td>';
-                    echo '<td><a href="../../Login/professor/certificadoAluno.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">book</i>Certificados</a></td>';
+                    echo '<td>' . ($dados['nome_projeto']) . '</td>';
+                    echo '<td><i class="material-icons left" style="color: #F20F10;">brightness_1</i>' . ($dados['situacao']) . '</td>';
+                    echo '<td><a href="../../Login/professor/certificadoAluno.php?id_projeto=' . ($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">book</i>Certificados</a></td>';
                     echo '</tr>';
                 }
             }

@@ -1,17 +1,11 @@
 <?php
 // Conectar ao banco de dados
-require_once("../../notificacao/funcaoNotificacao.php");
-require_once("../../conecta.php");
+require_once "../conecta.php";
 $conexao = conectar();
-$id_projeto = $_GET['id_projeto'];
-
-// Verifica se o id_projeto está definido e é numérico
-if (!isset($id_projeto) || !is_numeric($id_projeto)) {
-    die("ID do projeto inválido.");
-}
 
 // Corrige o SQL e adiciona alias para evitar ambiguidades
 $sql = "SELECT 
+            pro.id_projeto,
             user.nome, 
             userpro.id_inscricao, 
             SUM(CASE WHEN freq.id_frequencia IS NOT NULL THEN en.CH ELSE 0 END) AS total_CH
@@ -27,7 +21,7 @@ $sql = "SELECT
             frequencia freq ON freq.fk_id_encontro = en.id_encontro
             AND freq.fk_usuario_id_usuario = user.id_usuario
         WHERE 
-            pro.id_projeto = $id_projeto
+            pro.id_projeto = $id_inscricao
         GROUP BY 
             user.id_usuario;";
 
@@ -42,7 +36,7 @@ if (!$resultado) {
 // Lista os itens
 echo '<table border=1>
 <tr>
-<th>Nome</th>
+<th>Projeto</th>
 <th>Carga Horária Total</th>
 <th>Opções</th>
 </tr>';
@@ -50,9 +44,9 @@ echo '<table border=1>
 // Exibe os dados
 while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<tr>';    
-    echo '<td>' . ($dados['nome']) . '</td>';
+    echo '<td>' . ($dados['nome_projeto']) . '</td>';
     echo '<td>' . ($dados['total_CH']) . '</td>';
-    echo '<td><button><a href="../../certificado.php?verificacao=' . ($dados['id_inscricao']) .'">Emitir Certificado</a></button></td>';
+    echo '<td><button><a href="../certificado.php?verificacao=' . ($dados['id_inscricao']) .'">Emitir Certificado</a></button></td>';
     echo '</tr>';
 }
 

@@ -58,16 +58,6 @@ $quantidade_linhas = $resultado_busca_sql_user_pro->num_rows;
 </head>
 
 <body>
-    <div id="navbar" class="navbar-fixed scrollspy">
-        <nav class="white">
-            <div class="nav-wrapper container">
-                <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="../../Login/aluno/aluno.php">Voltar</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
 
     <div class="container section scrollspy">
         <div class="section">
@@ -93,8 +83,6 @@ $quantidade_linhas = $resultado_busca_sql_user_pro->num_rows;
                         }
                         echo '<tr>';
                         if ($projeto['situacao'] == "Inativo") {
-                            echo '<td class="inactive-project">' . $projeto['nome_projeto'] . '</td>';
-                            echo '<td class="inactive-project">Projeto Inativo</td>';
                         } else {
                             echo '<td>' . $projeto['nome_projeto'] . '</td>';
                             if ($ja_inscrito) {

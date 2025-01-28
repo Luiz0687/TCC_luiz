@@ -76,12 +76,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_projeto'])) {
 </head>
 
 <body>
-    <div id="navbar" class="navbar-fixed scrollspy">
+<div id="navbar" class="navbar-fixed scrollspy">
         <nav class="white">
             <div class="nav-wrapper container">
-                <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
+                <div class="container">
+                    <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
+                </div>
+
+                <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="../../Login/aluno/aluno.php">Voltar</a></li>
+
+                <li><a href="aluno.php" > Projetos</a></li>
+                    <li><a href="minhaInscricoes.php">Inscrições</a></li>
+                    <li><a href="../../certificadoAluno/inicioCertificado.php">Certificado</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
+
+                </ul>
+                <ul class="right side-nav" id="mobile-demo">
+                <li><a href="" > Projetos</a></li>
+                    <li><a href="minhaInscricoes.php">Inscrições</a></li>
+                    <li><a href="../../certificadoAluno/inicioCertificado.php">Certificado</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
+
+
                 </ul>
             </div>
         </nav>
@@ -94,15 +111,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_projeto'])) {
                 <table>
                     <tr>
                         <th>Projeto</th>
+                        <th>Frequência</th>
                         <th>Opções</th>
                     </tr>
                     <?php
                     if (empty($projetos)) {
-                        echo "<tr><td colspan='2'>Você não está inscrito em nenhum projeto.</td></tr>";
+                        echo "<tr><td colspan='3'>Você não está inscrito em nenhum projeto.</td></tr>";
                     } else {
                         foreach ($projetos as $projeto) {
                             echo "<tr>";
                             echo "<td>" . $projeto['nome_projeto'] . "</td>";
+                            echo '<td>
+                                    <a href="frequencia.php?id_projeto=' . $projeto['id_projeto'] . '" class="blue-text">Ver Frequência</a>
+                                  </td>';
                             echo '<td>
                                 <form id="form-sair-' . $projeto['id_projeto'] . '" method="POST" style="display:inline;">
                                     <input type="hidden" name="id_projeto" value="' . $projeto['id_projeto'] . '">

@@ -1,6 +1,7 @@
 <?php
-require_once "../notificacao/funcaoNotificacao.php";
-?>
+require_once "notificacao/funcaoNotificacao.php";
+
+   ?>
 
 <!DOCTYPE html>
 <html lang='pt-BR' class=''>
@@ -12,7 +13,7 @@ require_once "../notificacao/funcaoNotificacao.php";
 
     <meta name="robots" content="noindex">
 
-    <link rel="shortcut icon" type="image/x-icon" href="../Style/images/icone.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="Style/images/icone.jpg">
     <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
     <link rel="canonical" href="https://codepen.io/kh3996/pen/pojXrBj">
 
@@ -92,6 +93,16 @@ require_once "../notificacao/funcaoNotificacao.php";
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        section .container .user .formBx form h6 {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             text-align: center;
             width: 100%;
             margin-bottom: 10px;
@@ -208,16 +219,19 @@ limpaNotificacoes();
     <section>
         <div class="container">
             <div class="user signinBx">
-                <div class="imgBx"><img src="../Style/images/logsbot.jpg" alt="" /></div>
+                <div class="imgBx"><img src="Style/images/logsbot.jpg" alt="" /></div>
                 <div class="formBx">
+              
+                    <form action="certificado.php" method="get">
+                        <h2>Verificar Certificado</h2>
+                        <h6>Insira o ID de verificação do seu certificado abaixo.</h6>
+                        
 
-                    <form action="recuperar.php" method="post">
-                        <h2>Recuperação de senha</h2>
-                        <input type="text" name="email" placeholder="e-mail" required />
-                        <input type="submit" value="Enviar" />
+                        <input type="text" name="verificacao" placeholder="ID de verificação" required />
+                        <input type="submit" value="Verificar" />
                         <p class="signup">
-                            Lembrei a senha
-                            <a href="../index.php">Voltar.</a>
+                            Não quero emitir meu certificado
+                            <a href="index.php">Voltar.</a>
                         </p>
 
                     </form>
@@ -238,6 +252,3 @@ limpaNotificacoes();
 
 
 </html>
-
-
-     

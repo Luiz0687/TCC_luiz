@@ -4,8 +4,8 @@
  $conexao = conectar();
 
  $id_inscricao = $_GET['verificacao'];
- 
-  
+ $tipoUsuario = $_SESSION['usuario'][2];
+
 $sql = "SELECT 
     user_pro.id_inscricao, 
     aluno.nome AS nome_aluno, 
@@ -178,7 +178,17 @@ small {
 
 
       <button class="btn btn-info" id="downloadPDF">Baixar em PDF</button>
-      <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
+      <?php
+      if($tipoUsuario = 1){?>
+        <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
+
+   <?php   }
+   
+   if ($tipoUsuario = 2){?>
+   <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
+   <?php }
+   ?>
+      
     </div>
     <div class="cert-container print-m-0">
       <div id="content2" class="cert">
@@ -202,8 +212,48 @@ small {
             >sob orientação do servidor <b><?php echo $linhas['nome_professor'] ?></b>, completando <b><?php echo $total_CH ?></b> horas de participação efetiva.</small
           ><br /><br />
           <div class="bottom-txt">
-            <span>ID de Verificação: <?php echo $linhas['id_inscricao'] ?></span>
-            <span>Emitido em: <?php echo $linhas['data_finalizacao'] ?></span>
+            <span><b>ID de Verificação:</b> <?php echo $linhas['id_inscricao'] ?></span>
+            
+              <span style="font-size: 12px;"><b>Verificar</b><br><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost/TCC_luiz/certificado.php?validacao=<?php echo $linhas['id_inscricao']; ?>&amp;size=100x100" alt="" title="ProjetoFácil" width="80" height="80" /></span>
+            
+            <span><b>Emitido em:</b> 
+            
+            <?php
+// Definir o timezone
+date_default_timezone_set('America/Sao_Paulo');
+
+function dataportugues($suadata) {
+    $meses = [
+        'January' => 'janeiro',
+        'February' => 'fevereiro',
+        'March' => 'março',
+        'April' => 'abril',
+        'May' => 'maio',
+        'June' => 'junho',
+        'July' => 'julho',
+        'August' => 'agosto',
+        'September' => 'setembro',
+        'October' => 'outubro',
+        'November' => 'novembro',
+        'December' => 'dezembro'
+    ];
+    $timestamp = strtotime($suadata);
+    if (!$timestamp) {
+        echo "Data inválida!";
+        return;
+    }
+    ;
+    $mesPortugues = $meses[date('F', $timestamp)] ?? 'Mês desconhecido';
+    $dia = date('d', $timestamp);
+    $ano = date('Y', $timestamp);
+
+    // Exibir a data formatada
+    echo "$dia de {$mesPortugues} de $ano";
+}
+//Exibir a data
+dataportugues($linhas['data_finalizacao']); // Troca esse '2025-02-09' pela variável $ que tem a data
+?>
+            </span>
           </div>
         </div>
       </div>

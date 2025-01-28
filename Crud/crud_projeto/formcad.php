@@ -55,10 +55,11 @@ $conexao = conectar();
     <!-- Navbar -->
     <div id="navbar" class="navbar-fixed scrollspy">
         <nav class="white">
-            <div class="nav-wrapper container">
-                <div class="container">
+        <div class="container">
                     <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
                 </div>
+            <div class="nav-wrapper container">
+              
 
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">

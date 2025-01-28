@@ -4,20 +4,30 @@ require_once("../../notificacao/funcaoNotificacao.php");
 require_once("../../conecta.php");
 $conexao = conectar();
 
-// Consulta para obter apenas os encontros com frequência registrada para o usuário, ordenados por nome do projeto
-$busca_sql_user_pro = "
-    SELECT 
-        pro.nome_projeto, 
-        en.data, 
-        en.CH
-    FROM projeto pro
-    INNER JOIN encontro en ON en.fk_id_projeto = pro.id_projeto
-    INNER JOIN frequencia fre ON fre.fk_id_encontro = en.id_encontro
-    WHERE fre.fk_usuario_id_usuario = " . $_SESSION['usuario'][1] . "
-    ORDER BY pro.nome_projeto ASC";
+// Verificar se o ID do projeto foi enviado como parâmetro.
+if (isset($_GET['id_projeto']) && is_numeric($_GET['id_projeto'])) {
+    $id_projeto = intval($_GET['id_projeto']);
 
-$resultado_busca_sql_user_pro = executarSQL($conexao, $busca_sql_user_pro);
-$frequencias = mysqli_fetch_all($resultado_busca_sql_user_pro, MYSQLI_ASSOC);
+    // Consulta para obter os encontros e frequência do projeto específico.
+    $busca_sql_user_pro = "
+        SELECT 
+            pro.nome_projeto, 
+            en.data, 
+            en.CH
+        FROM projeto pro
+        INNER JOIN encontro en ON en.fk_id_projeto = pro.id_projeto
+        INNER JOIN frequencia fre ON fre.fk_id_encontro = en.id_encontro
+        WHERE fre.fk_usuario_id_usuario = " . $_SESSION['usuario'][1] . "
+          AND pro.id_projeto = $id_projeto
+        ORDER BY en.data ASC";
+
+    $resultado_busca_sql_user_pro = executarSQL($conexao, $busca_sql_user_pro);
+    $frequencias = mysqli_fetch_all($resultado_busca_sql_user_pro, MYSQLI_ASSOC);
+} else {
+    // Redireciona de volta caso o ID do projeto não seja válido.
+    echo "<script>alert('Projeto inválido!'); window.location.href = 'minhaInscricoes.php';</script>";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +36,7 @@ $frequencias = mysqli_fetch_all($resultado_busca_sql_user_pro, MYSQLI_ASSOC);
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    <title>Frequências nos Projetos</title>
+    <title>Frequências no Projeto</title>
 
     <!-- CSS -->
     <link rel="shortcut icon" type="image/x-icon" href="../../Style/images/icone.jpg">
@@ -59,12 +69,27 @@ $frequencias = mysqli_fetch_all($resultado_busca_sql_user_pro, MYSQLI_ASSOC);
 </head>
 
 <body>
-    <div id="navbar" class="navbar-fixed scrollspy">
+<div id="navbar" class="navbar-fixed scrollspy">
         <nav class="white">
             <div class="nav-wrapper container">
-                <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
+                <div class="container">
+                    <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
+                </div>
+
+                <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="../../Login/aluno/aluno.php">Voltar</a></li>
+                <li><a href="aluno.php" > Projetos</a></li>
+                    <li><a href="minhaInscricoes.php">Inscrições</a></li>
+                    <li><a href="../../certificadoAluno/inicioCertificado.php">Certificado</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
+
+                </ul>
+                <ul class="right side-nav" id="mobile-demo">
+                <li><a href="" > Projetos</a></li>
+                    <li><a href="minhaInscricoes.php">Inscrições</a></li>
+                    <li><a href="../../certificadoAluno/inicioCertificado.php">Certificado</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
+
                 </ul>
             </div>
         </nav>
@@ -72,32 +97,34 @@ $frequencias = mysqli_fetch_all($resultado_busca_sql_user_pro, MYSQLI_ASSOC);
 
     <div class="container section scrollspy">
         <div class="section">
-            <h3>Frequências nos Projetos</h3>
+            <h3>Frequências no Projeto</h3>
             <div class="table-container">
-                <table>
-                    <tr>
-                        <th>Projeto</th>
-                        <th>Encontro</th>
-                        <th>Carga Horária</th>
-                    </tr>
-                    <?php
-                    $total_carga_horaria = 0;
-
-                    foreach ($frequencias as $frequencia) {
-                        $total_carga_horaria += $frequencia['CH'];
-
-                        echo '<tr>';
-                        echo '<td>' . $frequencia['nome_projeto'] . '</td>';
-                        echo '<td>' . $frequencia['data'] . '</td>';
-                        echo '<td>' . $frequencia['CH'] . ' horas</td>';
-                        echo '</tr>';
-                    }
-                    ?>
-                    <tr>
-                        <th colspan="2">Total de Carga Horária</th>
-                        <th><?php echo $total_carga_horaria; ?> horas</th>
-                    </tr>
-                </table>
+                <?php if (!empty($frequencias)): ?>
+                    <table>
+                        <tr>
+                            <th>Projeto</th>
+                            <th>Encontro</th>
+                            <th>Carga Horária</th>
+                        </tr>
+                        <?php
+                        $total_carga_horaria = 0;
+                        foreach ($frequencias as $frequencia) {
+                            $total_carga_horaria += $frequencia['CH'];
+                            echo '<tr>';
+                            echo '<td>' . htmlspecialchars($frequencia['nome_projeto']) . '</td>';
+                            echo '<td>' . htmlspecialchars(date('d/m/Y', strtotime($frequencia['data']))) . '</td>';
+                            echo '<td>' . htmlspecialchars($frequencia['CH']) . ' horas</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                        <tr>
+                            <th colspan="2">Total de Carga Horária</th>
+                            <th><?php echo $total_carga_horaria; ?> horas</th>
+                        </tr>
+                    </table>
+                <?php else: ?>
+                    <p>Não há frequência registrada para este projeto.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>

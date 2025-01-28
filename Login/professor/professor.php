@@ -11,36 +11,29 @@ require_once "../../notificacao/funcaoNotificacao.php";
     <title>Projeto</title>
 
     <!-- CSS  -->
-    
     <link rel="shortcut icon" type="image/x-icon" href="../../Style/images/icone.jpg">
     <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
     <link rel="canonical" href="https://codepen.io/kh3996/pen/pojXrBj">
-    
     <link href="../../Style/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../../Style/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
     <div id="navbar" class="navbar-fixed scrollspy">
         <nav class="white">
+            <div class="container">
+                <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
+            </div>
             <div class="nav-wrapper container">
-                <div class="container">
-                    <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
-                </div>
-
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
-
-                    <li><a href=""  > Projetos</a></li>
-                    <li><a href="../../Crud/crud_perfil/inicial.php"  >Meu Perfil</a></li>
-                    <li><a href="../../index.php"  >Sair</a></li>
-
+                    <li><a href="">Projetos</a></li>
+                    <li><a href="../../Crud/crud_perfil/inicial.php">Meu Perfil</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
                 </ul>
                 <ul class="right side-nav" id="mobile-demo">
                     <li><a class="head-link" href="">Meus Projetos</a></li>
@@ -53,32 +46,21 @@ require_once "../../notificacao/funcaoNotificacao.php";
 
     <div class="container section scrollspy">
         <div class="section">
-
             <div class="row">
-
-                <div class="col s12 m4 l6">
+                <div class="col s12 m8 l6">
                     <h4>Meus Projetos</h4>
                 </div>
-                <div class="col s12 m4 l3">
-                    <div>
-                        <a href="designar.php" class="waves-effect waves-light black btn-large"><i class="material-icons left"></i>Designar Monitor</a>
-                        </div>
+                <div class="col s12 m4 l6 right-align">
+                    <a href="../../Crud/crud_projeto/formcad.php" class="waves-effect waves-light black btn-large">
+                        <i class="material-icons left">add_box</i>criar novo projeto
+                    </a>
                 </div>
-                <div class="col s12 m4 l3">
-                            <div>
-                        <a href="../../Crud/crud_projeto/formcad.php" class="waves-effect waves-light black btn-large"><i class="material-icons left">add_box</i>criar novo projeto</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-             <?php
-             require_once "../../Crud/crud_projeto/listar.php";
-             ?>
-
             </div>
         </div>
+
+        <?php
+        require_once "../../Crud/crud_projeto/listar.php";
+        ?>
     </div>
 
     <!--  Scripts-->
@@ -86,14 +68,13 @@ require_once "../../notificacao/funcaoNotificacao.php";
     <script src="../../Style/js/materialize.js"></script>
     <script src="../../Style/js/init.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.materialboxed').materialbox();
             $('.button-collapse').sideNav();
-
         });
     </script>
     <script>
-        $('.head-link').click(function(e) {
+        $('.head-link').click(function (e) {
             e.preventDefault();
 
             var goto = $(this).attr('href');
@@ -103,9 +84,6 @@ require_once "../../notificacao/funcaoNotificacao.php";
             }, 800);
         });
     </script>
-
-<!-- Modal Trigger -->
-
 </body>
 
 </html>

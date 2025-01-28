@@ -275,6 +275,10 @@ if ($_POST) {
                 Ainda não tem uma conta ?
                 <a href="#" onclick="toggleForm();">Cadastre-se.</a>
               </p>
+              <p class="signup">
+                Quer verificar um certificado ?
+                <a href="verCertificado.php" onclick="toggleForm();">Verificar.</a>
+              </p>
             </form>
 
           </div>

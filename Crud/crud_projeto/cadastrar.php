@@ -9,6 +9,7 @@ $nome = $_POST['nome_projeto'];
 $situacao = $_POST['situacao'];
 $id_professor = $_POST['id_professor'];
 
+
 //comando sql.
 $sql = "INSERT INTO projeto (nome_projeto, situacao, fk_projeto_id_professor) 
 VALUES ('$nome', '$situacao', $id_professor)";

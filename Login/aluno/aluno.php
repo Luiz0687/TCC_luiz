@@ -1,10 +1,6 @@
 <?php
-include_once "../../notificacao/funcaoNotificacao.php";
-include_once "../../conecta.php";
-$conexao = conectar();
-
+require_once "../../notificacao/funcaoNotificacao.php";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,76 +37,36 @@ $conexao = conectar();
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
 
-                  
-                    <li><a href="../../index.php" >Sair</a></li>
+                <li><a href="aluno.php" > Projetos</a></li>
+                    <li><a href="minhaInscricoes.php">Inscrições</a></li>
+                    <li><a href="../../certificadoAluno/inicioCertificado.php">Certificado</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
+
+                </ul>
+                <ul class="right side-nav" id="mobile-demo">
+                <li><a href="" > Projetos</a></li>
+                    <li><a href="minhaInscricoes.php">Inscrições</a></li>
+                    <li><a href="../../certificadoAluno/inicioCertificado.php">Certificado</a></li>
+                    <li><a href="../../index.php">Sair</a></li>
 
                 </ul>
             </div>
         </nav>
     </div>
 
-    <div class="container section scrollspy">
-        <div class="section">
+    
 
+        
 
-            </div>
+            <div class="row">
 
-            <div class="options-container">
-    <?php  
-    echo "<h3>Olá, " . $_SESSION['usuario'][0] . "</h3>";
-    ?>
-    <a href="listarProjeto.php" class="btn-option">Projetos disponíveis</a><br>
-    <a href="minhaInscricoes.php" class="btn-option">Minhas inscrições</a><br>
-    <a href="frequencia.php" class="btn-option">Minhas frequências</a><br>
-    <a href="emitirCertificado.php" class="btn-option">Emitir Certificado</a><br>
-</div>
-
-<style>
-    .options-container {
-        text-align: left; /* Alinha as opções à esquerda */
-        margin: 20px auto;
-        max-width: 300px; /* Define uma largura máxima para as opções */
-    }
-
-    .btn-option {
-        display: block;
-        margin: 10px 0;
-        padding: 12px 20px;
-        text-decoration: none;
-        color: #fff;
-        background-color: #000; /* Cor preta para o fundo */
-        border-radius: 5px;
-        font-size: 18px;
-        text-align: center;
-        transition: background-color 0.3s ease, transform 0.2s ease; /* Transição suave */
-    }
-
-    .btn-option:hover {
-        background-color: #444; /* Cor mais clara no hover */
-        transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
-    }
-
-    /* Adicionando um pouco de sombra para um efeito 3D */
-    .btn-option:active {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Adicionando um pouco de espaçamento nas opções */
-    .options-container a {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-</style>
-
-
-
+             <?php
+             require_once "listarProjeto.php";
+             ?>
 
             </div>
         </div>
     </div>
-
-
-    
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -140,5 +96,3 @@ $conexao = conectar();
 </body>
 
 </html>
-        <?php
-    
