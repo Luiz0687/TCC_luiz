@@ -93,7 +93,7 @@
 
                         if ($tipo_usuario == 3) {
                             // Query para o aluno
-                            $sql = "SELECT projeto.* FROM projeto 
+                            $sql = "SELECT projeto.*, usuario_projeto.* FROM projeto 
                                     JOIN usuario_projeto ON projeto.id_projeto = usuario_projeto.fk_projeto_id_projeto
                                     WHERE usuario_projeto.fk_usuario_id_usuario = '$id_usuario'
                                     ORDER BY projeto.situacao ASC";
@@ -132,7 +132,7 @@
                                     }
 
                                     // Exibe sempre a opção de certificado com o ícone correto
-                                    echo '<a href="../../Login/aluno/certificadoAluno.php?id_projeto=' . $dados['id_projeto'] . '" class="certificado-link"><i class="material-icons">book</i>Certificado</a>';
+                                    echo '<a href="certificado.php?id_projeto=' . $dados['id_projeto'] . '&verificacao='.$dados['id_inscricao'].'" class="certificado-link"><i class="material-icons">book</i>Certificado</a>';
                                 }
                                 echo '</td>';
                                 echo '</tr>';
