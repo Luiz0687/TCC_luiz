@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 28-Jan-2025 às 21:53
--- Versão do servidor: 8.0.31
--- versão do PHP: 8.0.26
+-- Tempo de geração: 29-Jan-2025 às 05:02
+-- Versão do servidor: 8.3.0
+-- versão do PHP: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `encontro` (
   `fk_id_projeto` int DEFAULT NULL,
   PRIMARY KEY (`id_encontro`),
   KEY `fk_encontro_projeto_id_projeto` (`fk_id_projeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `encontro`
@@ -50,7 +50,8 @@ INSERT INTO `encontro` (`id_encontro`, `CH`, `data`, `fk_id_projeto`) VALUES
 (27, 2, '2025-01-23', 24),
 (29, 3, '2025-01-28', 25),
 (30, 4444, '2025-01-08', 25),
-(31, 2, '2025-01-23', 22);
+(31, 2, '2025-01-23', 22),
+(33, 333, '2025-01-30', 25);
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `frequencia` (
   PRIMARY KEY (`id_frequencia`),
   KEY `fk_frequencia_id_encontro` (`fk_id_encontro`),
   KEY `fk_frequencia_usuario_id_usuario` (`fk_usuario_id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `frequencia`
@@ -78,7 +79,8 @@ INSERT INTO `frequencia` (`id_frequencia`, `fk_id_encontro`, `fk_usuario_id_usua
 (81, 24, 17),
 (82, 29, 4),
 (83, 30, 4),
-(84, 31, 4);
+(84, 31, 4),
+(86, 33, 4);
 
 -- --------------------------------------------------------
 
@@ -148,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(255) DEFAULT NULL,
   `usuario_tipo` int NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -160,7 +162,8 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`, `usuario_tipo`) V
 (9, 'Luiz Guilherme', 'luiz.2022310970@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Q3ZNM0JDOW5jaVZJYzB2Yw$PijhV7DLf8QjGZyW6LciwX5Ac36hOZH/2ZSQhgzTEpc', 1),
 (17, 'feijao', 'luiz@luiz', '$argon2i$v=19$m=65536,t=4,p=1$d1lmNkJJNlRweXFDWFJZcg$rbssj12HTisyVUOYfmeZe4derQjK9BxeXxrQpfrGY8U', 3),
 (18, 'Luiz Guilherme', '123@123', '$argon2i$v=19$m=65536,t=4,p=1$d3loM3FqOWxyVGxuOXhQZw$73MAKWUqB6XecO7btyoinCCx+xAmHNpbrIdP+7cwuew', 3),
-(19, 'fabricio', 'fabricio@fabricio', '$argon2i$v=19$m=65536,t=4,p=1$RGQwREJ2UkYyMElhV3phZg$IgNr+KOSpulQndwdXeF7+gzRAGH5sJAp64Z081UBflw', 3);
+(19, 'fabricio', 'fabricio@fabricio', '$argon2i$v=19$m=65536,t=4,p=1$RGQwREJ2UkYyMElhV3phZg$IgNr+KOSpulQndwdXeF7+gzRAGH5sJAp64Z081UBflw', 3),
+(20, 'Roberto Graziadei', 'roberto@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$TTZUU2FaZWRPSmUuV2F3bQ$kGoWkFgQTAe3DZr9v8RY/MfO1D0HzUoVVzbJVL4BJjU', 2);
 
 -- --------------------------------------------------------
 
@@ -176,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
   PRIMARY KEY (`id_inscricao`),
   KEY `fk_usuario_id_usuario` (`fk_usuario_id_usuario`),
   KEY `fk_projeto_id_projeto` (`fk_projeto_id_projeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `usuario_projeto`
@@ -189,7 +192,7 @@ INSERT INTO `usuario_projeto` (`fk_usuario_id_usuario`, `fk_projeto_id_projeto`,
 (19, 24, 33),
 (19, 22, 34),
 (4, 25, 40),
-(4, 22, 44);
+(4, 22, 45);
 
 --
 -- Restrições para despejos de tabelas

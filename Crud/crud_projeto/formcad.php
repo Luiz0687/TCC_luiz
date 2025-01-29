@@ -15,7 +15,7 @@ $conexao = conectar();
     <link rel="shortcut icon" type="image/x-icon" href="../../Style/images/icone.jpg">
     <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
     <link rel="canonical" href="https://codepen.io/kh3996/pen/pojXrBj">
-    
+
     <link href="../../Style/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../../Style/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
@@ -44,9 +44,12 @@ $conexao = conectar();
         }
 
         .toggle-btn.active {
-            background-color: black; /* Cor de fundo preta */
-            color: white; /* Cor do texto branca */
-            border-color: black; /* Borda preta */
+            background-color: black;
+            /* Cor de fundo preta */
+            color: white;
+            /* Cor do texto branca */
+            border-color: black;
+            /* Borda preta */
         }
     </style>
 </head>
@@ -55,19 +58,19 @@ $conexao = conectar();
     <!-- Navbar -->
     <div id="navbar" class="navbar-fixed scrollspy">
         <nav class="white">
-        <div class="container">
-                    <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
-                </div>
+            <div class="container">
+                <a class="brand-logo"><img src="../../Style/images/logo.svg" style="height: 50px;"></a>
+            </div>
             <div class="nav-wrapper container">
-              
+
 
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
 
-                  
-                  
+
+
                     <li><a href="../../Login/professor/professor.php">Voltar</a></li>
-                    </ul>
+                </ul>
             </div>
         </nav>
     </div>
@@ -99,15 +102,15 @@ $conexao = conectar();
                 <button type="submit" class="btn waves-effect waves-light black">Cadastrar</button>
             </form>
         </div>
-
+        
     </div>
 
-    
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../Style/js/materialize.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const toggleButtons = document.querySelectorAll('.toggle-btn');
             const situacaoInput = document.getElementById('situacao');
             const form = document.querySelector('form');

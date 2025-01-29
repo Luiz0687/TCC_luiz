@@ -178,16 +178,11 @@ small {
 
 
       <button class="btn btn-info" id="downloadPDF">Baixar em PDF</button>
-      <?php
-      if($tipoUsuario = 1){?>
+  
+     
         <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
 
-   <?php   }
    
-   if ($tipoUsuario = 2){?>
-   <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
-   <?php }
-   ?>
       
     </div>
     <div class="cert-container print-m-0">

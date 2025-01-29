@@ -31,13 +31,11 @@ require_once "../../notificacao/funcaoNotificacao.php";
             <div class="nav-wrapper container">
                 <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="">Projetos</a></li>
+        
                     <li><a href="../sair.php">Sair</a></li>
                 </ul>
-                <ul class="right side-nav" id="mobile-demo">
-                    <li><a class="head-link" href="">Meus Projetos</a></li>
-                    <li><a class="head-link" href="../../Crud/crud_perfil/inicial.php">Meu Perfil</a></li>
-                    <li><a class="head-link" href="../../index.php">Sair</a></li>
+                
+                    <li><a class="head-link" href="../sair.php">Sair</a></li>
                 </ul>
             </div>
         </nav>
@@ -47,7 +45,7 @@ require_once "../../notificacao/funcaoNotificacao.php";
         <div class="section">
             <div class="row">
                 <div class="col s12 m8 l6">
-                    <h4>Monitoria</h4>
+                    <h4>Monitor</h4>
                 </div>
                 <div class="col s12 m4 l6 right-align">
                   

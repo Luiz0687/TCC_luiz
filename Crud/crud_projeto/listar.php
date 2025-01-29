@@ -5,44 +5,23 @@ require_once("../../conecta.php");
 $conexao = conectar();
 
 // Verificar se a variável 'usuario' está definida
-if (!isset($_SESSION['usuario']) || !isset($_SESSION['usuario'][1]) || !isset($_SESSION['usuario'][2])) {
+if (!isset($_SESSION['usuario']) || !isset($_SESSION['usuario'][1])) {
     die('Sessão de usuário não definida ou inválida.');
 }
 
-// Obter o ID do usuário e o tipo de usuário (1 = professor, 2 = monitor)
-$id_usuario = mysqli_real_escape_string($conexao, $_SESSION['usuario'][1]);
-$tipo_usuario = mysqli_real_escape_string($conexao, $_SESSION['usuario'][2]);
+// Obter o ID do professor de forma segura
+$id_professor = mysqli_real_escape_string($conexao, $_SESSION['usuario'][1]);
 
-// Lógica para exibir os projetos conforme o tipo de usuário
-if ($tipo_usuario == 1) { // Caso seja professor
-    // Selecionar os projetos do professor logado
-    $sql = "SELECT * FROM projeto WHERE fk_projeto_id_professor = '$id_usuario' ORDER BY situacao ASC";
-} elseif ($tipo_usuario == 2) { // Caso seja monitor
-    // Selecionar todos os projetos vinculados aos professores
-    $sql = "
-        SELECT p.*
-        FROM projeto p
-        INNER JOIN usuario u ON u.id_usuario = p.fk_projeto_id_professor
-        WHERE u.usuario_tipo = 1
-        ORDER BY p.situacao ASC
-    ";
-} else {
-    die('Você não tem permissão para visualizar projetos.');
-}
+// Seleciona todos os dados da tabela 'projeto'
+$sql = "SELECT * FROM projeto WHERE fk_projeto_id_professor = '$id_professor' ORDER BY situacao ASC";
 
-// Executar a consulta SQL
+// Executa o Select
 $resultado = mysqli_query($conexao, $sql);
-
-// Verificar se a consulta foi executada corretamente
-if (!$resultado) {
-    die('Erro na consulta SQL: ' . mysqli_error($conexao)); // Exibe o erro de consulta
-}
 
 $quantidade_linha = $resultado->num_rows;
 
-// Exibir os projetos ou mensagem de ausência
 if ($quantidade_linha == 0) {
-    echo "Nenhum projeto encontrado!";
+    echo "Você não tem projetos cadastrados!";
 } else {
 ?>
 
@@ -59,18 +38,18 @@ if ($quantidade_linha == 0) {
             while ($dados = mysqli_fetch_assoc($resultado)) {
                 if ($dados['situacao'] == "Ativo") {
                     echo '<tr>';
-                    echo '<td>' . htmlspecialchars($dados['nome_projeto']) . '</td>';
-                    echo '<td><i class="material-icons left" style="color: #05CA5D;">brightness_1</i>' . htmlspecialchars($dados['situacao']) . '</td>';
-                    echo '<td><a href="../../Crud/crud_encontro/listar.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">people</i>Encontros</a></td>';
-                    echo '<td><a href="../../Crud/crud_projeto/finalizar.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">flag</i>Finalizar</a></td>';
-                    echo '<td><a href="../../Crud/crud_usuario/designar.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">person</i>Monitor</a></td>';
-                    echo '<td><a href="#" data-href="../../Crud/crud_projeto/excluir.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="btn-delete waves-effect waves-light btn-flat"><i class="material-icons">delete</i></a></td>';
+                    echo '<td>' . $dados['nome_projeto'] . '</td>';
+                    echo '<td><i class="material-icons left" style="color: #05CA5D;">brightness_1</i>' . $dados['situacao'] . '</td>';
+                    echo '<td><a href="../../Crud/crud_encontro/listar.php?id_projeto=' . $dados['id_projeto'] . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">people</i>Encontros</a></td>';
+                    echo '<td><a href="../../Crud/crud_projeto/finalizar.php?id_projeto=' . $dados['id_projeto'] . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">flag</i>Finalizar</a></td>';
+                    echo '<td><a href="../../Crud/crud_usuario/designar.php?id_projeto=' . $dados['id_projeto'] . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">person</i>Monitor</a></td>';
+                    echo '<td><a href="#" data-href="../../Crud/crud_projeto/excluir.php?id_projeto=' . $dados['id_projeto'] . '" class="btn-delete waves-effect waves-light btn-flat"><i class="material-icons">delete</i></a></td>';
                     echo '</tr>';
                 } else {
                     echo '<tr>';
-                    echo '<td>' . htmlspecialchars($dados['nome_projeto']) . '</td>';
-                    echo '<td><i class="material-icons left" style="color: #F20F10;">brightness_1</i>' . htmlspecialchars($dados['situacao']) . '</td>';
-                    echo '<td><a href="../../Login/professor/certificadoAluno.php?id_projeto=' . htmlspecialchars($dados['id_projeto']) . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">book</i>Certificados</a></td>';
+                    echo '<td>' . $dados['nome_projeto'] . '</td>';
+                    echo '<td><i class="material-icons left" style="color: #F20F10;">brightness_1</i>' . $dados['situacao'] . '</td>';
+                    echo '<td><a href="../../Login/professor/certificadoAluno.php?id_projeto=' . $dados['id_projeto'] . '" class="waves-effect waves-light btn-flat"><i class="material-icons left">book</i>Certificados</a></td>';
                     echo '</tr>';
                 }
             }

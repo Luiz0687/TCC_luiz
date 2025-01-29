@@ -69,7 +69,7 @@ $id_projeto = $_GET['id_projeto'];
 
                   
                   
-                <li><a href="../../Crud/crud_encontro/listar.php?id_projeto=<?php echo $id_projeto; ?>">Voltar</a></li>
+                <li><a href="listarEncontro.php?id_projeto=<?php echo $id_projeto; ?>">Voltar</a></li>
 
                     </ul>
             </div>
