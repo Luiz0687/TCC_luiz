@@ -105,7 +105,10 @@ if ($quantidade_usuario == 0) {
 
 
         $mail->send();
-        echo 'Email enviado com sucesso!<br>Confira o seu email.';
+        echo '<script> alert("Email enviado com sucesso! Confira o seu email.")
+    window.location.href = window.location.origin + "/TCC_luiz/index.php";
+    </script>';
+
 
         echo '<p><a href = "../index.php">Voltar para a tela inicial</a></p>';
 

@@ -4,7 +4,7 @@
  $conexao = conectar();
 
  $id_inscricao = $_GET['verificacao'];
- $tipoUsuario = $_SESSION['usuario'][2];
+ //$tipoUsuario = $_SESSION['usuario'][2];
 
 $sql = "SELECT 
     user_pro.id_inscricao, 
@@ -13,6 +13,7 @@ $sql = "SELECT
     pro.nome_projeto, 
     pro.data_finalizacao, 
     pro.id_projeto,
+    pro.situacao, 
     SUM(CASE WHEN freq.id_frequencia IS NOT NULL THEN en.CH ELSE 0 END) AS total_CH
 FROM 
     usuario_projeto user_pro 
@@ -34,11 +35,54 @@ GROUP BY
     professor.nome, 
     pro.nome_projeto, 
     pro.data_finalizacao, 
-    pro.id_projeto";
-
+    pro.id_projeto, 
+    pro.situacao";
+    
 $resultado = executarSQL($conexao, $sql);
-
 $linhas = mysqli_fetch_assoc($resultado);
+
+
+if (!$linhas || $linhas['situacao'] === "Ativo") {
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado Inválido</title>
+    <!-- Importando Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Importando Ícones do Google -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="red lighten-5">
+
+    <div class="container center-align" style="margin-top: 15%;">
+        <div class="card red lighten-4 z-depth-3">
+            <div class="card-content">
+                <i class="material-icons large red-text">error</i>
+                <h5 class="red-text text-darken-3">Certificado não localizado ou inválido</h5>
+                <p class="grey-text text-darken-2">O código informado não foi encontrado no sistema ou não é válido.</p>
+            </div>
+            <div class="card-action">
+                <a href="javascript:history.back()" class="btn waves-effect red darken-3">
+                    <i class="material-icons left">arrow_back</i> Voltar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importando JavaScript do Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>
+
+<?php
+} else {
+    
 $total_CH = $linhas['total_CH'];
 
 ?>
@@ -180,7 +224,7 @@ small {
       <button class="btn btn-info" id="downloadPDF">Baixar em PDF</button>
   
      
-        <a href="Login/professor/certificadoAluno.php?id_projeto=<?php echo $linhas['id_projeto']?>" class="btn btn-info">Voltar</a>
+        <a href="javascript:history.back()" class="btn btn-info">Voltar</a>
 
    
       
@@ -311,6 +355,8 @@ function getScreenshotOfElement(element, posX, posY, width, height, callback) {
 
 
 </script>
+
+<?php }; ?>
 </body>
 
 </html>

@@ -93,19 +93,20 @@
 
                         if ($tipo_usuario == 3) {
                             // Query para o aluno
-                            $sql = "SELECT projeto.*, usuario_projeto.* FROM projeto 
-                                    JOIN usuario_projeto ON projeto.id_projeto = usuario_projeto.fk_projeto_id_projeto
-                                    WHERE usuario_projeto.fk_usuario_id_usuario = '$id_usuario'
-                                    ORDER BY projeto.situacao ASC";
+                            $sql = "SELECT projeto.*, usuario_projeto.* FROM projeto JOIN usuario_projeto ON projeto.id_projeto = usuario_projeto.fk_projeto_id_projeto
+                            WHERE usuario_projeto.fk_usuario_id_usuario = '$id_usuario' 
+                            AND projeto.situacao = 'Inativo'
+                            ORDER BY projeto.situacao ASC";
                         } else {
                             die('Acesso negado.');
                         }
+
 
                         $resultado = mysqli_query($conexao, $sql);
                         $quantidade_linha = $resultado->num_rows;
 
                         if ($quantidade_linha == 0) {
-                            echo "<tr><td colspan='2'>Você não tem projetos cadastrados!</td></tr>";
+                            echo "<tr><td colspan='2'>Você não tem certificados cadastrados!</td></tr>";
                         } else {
                             while ($dados = mysqli_fetch_assoc($resultado)) {
                                 echo '<tr>';

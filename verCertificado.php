@@ -169,6 +169,7 @@ require_once "notificacao/funcaoNotificacao.php";
 
         section .container .signupBx .imgBx {
             left: -100%;
+            
         }
 
         section .container.active .signupBx .imgBx {
